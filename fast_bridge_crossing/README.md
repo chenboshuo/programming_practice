@@ -1,8 +1,12 @@
 # 每周一题之6 快速过桥
 - [微信原文](https://mp.weixin.qq.com/s?__biz=MzU2NjEwMTc5MQ==&mid=2247483745&idx=2&sn=0ad9f7b35de529368a9bcad35af06a5c&chksm=fcb0d311cbc75a0735418fcd145501662ea5800766f82ccbcb64d39893e2a520a0541124ba86&mpshare=1&scene=23&srcid=0106rr1psznzde1TqtoSKa2K#rd)
+
 PC/UVa IDs: 110403/10037,
+
 Popularity: B,
+
 Success rate: low Level: 3
+
 测试地址：https://vjudge.net/problem/UVA-10037
 
 [问题描述]
