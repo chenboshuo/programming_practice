@@ -76,3 +76,5 @@ The output of two consecutive cases must be separated by a blank line.
 2     2秒
 1 2   2秒
 ```
+## 我的思路
+速度最快的先通过或返回
