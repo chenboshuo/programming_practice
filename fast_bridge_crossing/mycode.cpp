@@ -3,7 +3,7 @@
  */
 #include "stdio.h"
 
-int a[1000], b[1000],len_a,len_b,person1=0,person2=0,sum=0;//设为全局变量方便函数调用
+int a[1000], b[1000],len_a,len_b=0,person1=0,person2=0,sum=0;//设为全局变量方便函数调用
 
 int max(int a, int b){
   if(a > b){
@@ -46,20 +46,32 @@ int remove(int *a,int len,int number) {
 
 int across_river(int *a, int *b,int len_a, int len_b) {
   if (len_a == 1) {
+    len_b++;
     *(b+len_b) = *a;
     person1 = *a;
     person2 = 0;
     len_a = remove(a,len_a,1);
-    len_b++;
     bubble_sort(b,len_b);
     return *(b);
   } else {
     *(b+len_b) = *a;
     *(b+len_b+1) = *(a+1);
+    len_b += 2;
+    if (len_b) {// test
+      printf("\n%s\n", "--a--");
+      for (int k = 0; k < len_a; k++) {
+        printf("%d  ", a[k]);
+      }
+      printf("\n%s\n", "----");
+      printf("%s\n", "--b--");
+      for (int h = 0; h < len_b; h++) {
+        printf("%d ", b[h]);
+      }
+      printf("\n%s\n", "---b--");
+    }
     person1 = *a;
     person2 = *(a+1);
     len_a = remove(a,len_a, 2);
-    len_b += 2;
     bubble_sort(b,len_b);
     return *(b+1);// 排序后,b的前两项为过河的人,第二个为时间较长的人
   }
@@ -82,20 +94,22 @@ int main(int argc, char const *argv[]) {
     // 输入
     scanf("%d\n", &len_a);
     for (int i = 0; i < len_a; i++) {
-      scanf("%d\n", a+i);
+      scanf("%d", a+i);
     }
 
     // 过河
     int i=0;
     while (len_a) {
-      across_river(a, b,len_a,len_b);
-      sum += person1 + person2;
+      sum += across_river(a, b,len_a,len_b);
+      // test
+      printf("%s\n", "====");
+      //
+
       temp[i][0] = person1;
       temp[i][1] = person2;
       i++;
 
-      go_back(a, b, len_a, len_b);
-      sum += person1;
+      sum += go_back(a, b, len_a, len_b);
       temp[i][0] = person1;
       i ++;
     }
