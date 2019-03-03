@@ -50,20 +50,18 @@
  * acceptable(the maximum minimal frequency is 1).
  * In the third example query any permutation of the given answer
  *  is acceptable (the maximum minimal frequency is 3).
+ *
+ * test
+ * https://vjudge.net/contest/285968#problem/A
 
  */
-#include <iostream>
-#include <string.h>
-void strcat_(char*a, int i){
-  while (i--) {
-    strcat(a,a);
-  }
-}
+#include <stdio.h>
+
 
 int main(int argc, char const *argv[]) {
   FILE *fp = fopen("D:/Downloads/temp/input.txt","r");
   int times;
-  char s[27] = "abcdefghijklmnopqrstuvwxyz";
+  char s = 'a';
   fscanf(fp, "%d",&times);
   while (times--) {
     int a,b;
@@ -71,12 +69,12 @@ int main(int argc, char const *argv[]) {
     int len = a/b;
     int rest = a % b;
     for (int j = 0; j < len; j++) {
-      for (int i = 0; i < b; i++) {
-        printf("%c", s[i]);
+      for (int i = 0; i < b ; i++) {
+        printf("%c", s+i);
       }
     }
-    if (rest) {
-      printf("a");
+    for (int i = 0; i < rest; i++) {
+      printf("%c", s+i);
     }
     printf("\n");
   }
