@@ -59,13 +59,13 @@
 
 
 int main(int argc, char const *argv[]) {
-  FILE *fp = fopen("D:/Downloads/temp/input.txt","r");
+  // FILE *fp = fopen("D:/Downloads/temp/input.txt","r");
   int times;
   char s = 'a';
-  fscanf(fp, "%d",&times);
+  scanf("%d",&times);
   while (times--) {
     int a,b;
-    fscanf(fp, "%d %d", &a, &b);
+    scanf("%d %d", &a, &b);
     int len = a/b;
     int rest = a % b;
     for (int j = 0; j < len; j++) {
