@@ -19,19 +19,15 @@ Output: ["h","a","n","n","a","H"]
  */
 #include <stdio.h>
 void reverseString(char* s, int sSize) {
-  char temp;
-  if (sSize == 2) {
-    temp = *s;
-    *s = *(s+1);
-    *(s+1) = temp;
+  if (sSize == 0 || sSize == 1) {
     return;
-  }else if(sSize == 3){
-    temp = *s;
-    *s = *(s+2);
-    *(s+2) = temp;
-    return;
+  } else {
+    char _;
+    _ = *s;
+    *s = *(s+sSize-1);
+    *(s+sSize-1) = _;
   }
-  reverseString(s+1,sSize-1);
+  reverseString(s+1,sSize-2);
 }
 int main(int argc, char const *argv[]) {
   char a[] = "hello";
