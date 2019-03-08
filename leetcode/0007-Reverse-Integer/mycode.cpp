@@ -30,20 +30,24 @@ Accepted
 619,510
 Submissions
 2,462,844
+
+reference:https://leetcode.com/problems/reverse-integer/discuss/4109/A-simple-C-solution-with-5ms
  */
+#include <climits>
 #include <stdio.h>
 int reverse(int x) {
-    int out = 0;
+    long long out = 0;
     do{
-        out += x % 10;
-        out *= 10;
-    }while(x /= 10);
-    if(x >=0) return out/10;
-    else return out/10*-1;
+        out = 10* out +x % 10;
+        x /= 10;
+    }while(x);
+    return(out > INT_MAX || out < INT_MIN) ? 0:(int) out;
 }
 int main(int argc, char const *argv[]) {
   int test = 1534236469;
   printf("%d\n", reverse(test));
   return 0;
 }
-// 没有考虑溢出的情况
+// output 0
+// Runtime: 12 ms, faster than 87.26% of C online submissions for Reverse Integer.
+// Memory Usage: 12.4 MB, less than 80.42% of C online submissions for Reverse Integer.
