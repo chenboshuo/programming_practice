@@ -8,9 +8,10 @@ bool isPalindrome(int x) {
         s[i++] = x % 10;
         x /= 10;
     }while(x);
-    for(int *p=s,*q=s+i-1; p!=q; p++,q--){
+    for(int *p=s,*q=s+i-1; p<q; p++,q--){
         if (*p != *q) return false;
     }
     return true;
 }
-// 	Runtime Error
+// Runtime: 112 ms, faster than 75.35% of C online submissions for Palindrome Number.
+// Memory Usage: 72.2 MB, less than 6.38% of C online submissions for Palindrome Number.
