@@ -1,5 +1,6 @@
+#include <string.h>
 bool isValid(char* s) {
-    int brackets[1000000000];
+    int brackets[strlen(s)];
     int *p = brackets+1;
     for(int i=0; *(s+i); i++){
         switch(*(s+i)){
@@ -14,6 +15,6 @@ bool isValid(char* s) {
     return true;
 }
 // Runtime Error Message:
-// AddressSanitizer: stack-overflow on address 0x7ffc03ffe780 (pc 0x000000401662 bp 0x7ffcf26b0fc0 sp 0x7ffc03ffe780 T0)
+// Line 2: Char 9: runtime error: variable length array bound evaluates to non-positive value 0 (solution.c)
 // Last executed input:
-// "()"
+// ""
