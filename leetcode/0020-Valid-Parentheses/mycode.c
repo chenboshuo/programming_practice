@@ -12,11 +12,10 @@ bool isValid(char* s) {
                 case'}': if(*(p-1) == 3) {p--;} else{return false;} break;
         }
     }
+    if(p != brackets+1){
+        return false;
+    }
     return true;
 }
-// Input:
-// "["
-// Output:
-// true
-// Expected:
-// false
+// Runtime: 4 ms, faster than 69.72% of C online submissions for Valid Parentheses.
+// Memory Usage: 7.3 MB, less than 64.10% of C online submissions for Valid Parentheses.
