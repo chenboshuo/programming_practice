@@ -1,6 +1,6 @@
 #include <string.h>
 bool isValid(char* s) {
-    int brackets[strlen(s)];
+    int brackets[strlen(s)+2];
     int *p = brackets+1;
     for(int i=0; *(s+i); i++){
         switch(*(s+i)){
@@ -14,7 +14,9 @@ bool isValid(char* s) {
     }
     return true;
 }
-// Runtime Error Message:
-// Line 2: Char 9: runtime error: variable length array bound evaluates to non-positive value 0 (solution.c)
-// Last executed input:
-// ""
+// Input:
+// "["
+// Output:
+// true
+// Expected:
+// false
