@@ -14,11 +14,3 @@ some programing exercise from lanqiao, leetcode and so on.
 
 > [recursion 递归](./recursion)
 - 递归类型的问题
-
-
-> [from_qut 青岛理工大学蓝桥杯模拟题 ](./from_qut)
->> [construct_string.cpp](./from_qut/construct_string.cpp)
-- 使字符串由最大的位置的元素构成
-
->> [BestSubsegment (未解决)求子串](./from_qut\BestSubsegment.cpp)
-- 求算术平均数最大的子串长度
