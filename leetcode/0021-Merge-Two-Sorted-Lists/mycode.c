@@ -7,6 +7,12 @@ struct ListNode {
 
 
 struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
+    if(!l1){
+        return l2;
+    }
+    if(!l2){
+        return l1;
+    }
     if(l1 -> val > l2->val){
             struct ListNode* t = l1;
             l1 = l2;
@@ -28,9 +34,9 @@ struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
     return head;
 }
 /**
- * 用了迭代还是死于两个空链表
- * https://leetcode.com/submissions/detail/220387087/
- * Last executed input:
- * []
- * []
+ * Runtime: 4 ms,
+ * faster than 100.00% of C online submissions for Merge Two Sorted Lists.
+ * Memory Usage: 7.4 MB,
+ * less than 100.00% of C online submissions for Merge Two Sorted Lists.
+ * https://leetcode.com/submissions/detail/220387626/
  */
