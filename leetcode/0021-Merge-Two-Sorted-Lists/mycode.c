@@ -7,6 +7,7 @@ struct ListNode {
 
 
 struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
+    // avoid the [],[] case
     if(!l1){
         return l2;
     }
