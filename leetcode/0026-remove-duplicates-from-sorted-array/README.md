@@ -49,3 +49,45 @@ for (int i = 0; i < len; i++) {
     print(nums[i]);
 }
 ```
+
+
+
+其他解法
+-   [source](https://leetcode.com/problems/remove-duplicates-from-sorted-array/discuss/11782/Share-my-clean-C%2B%2B-code)
+```cpp
+int count = 0;
+for(int i = 1; i < n; i++){
+    if(A[i] == A[i-1]) count++;
+    else A[i-count] = A[i];
+}
+return n-count;
+```
+
+-   [source](https://leetcode.com/problems/remove-duplicates-from-sorted-array/discuss/12079/4-lines-C-implement)
+```cpp
+int removeDuplicates(int* nums, int numsSize) {
+    int i, j;
+    for (i = 1, j = 0; i < numsSize; i++)
+        if (nums[i] != nums[i-1]) { nums[++j] = nums[i]; }
+    return (numsSize > 0 ? j+1 : j);
+}
+```
+
+-   [source](https://leetcode.com/problems/remove-duplicates-from-sorted-array/discuss/141714/Python3-beats-99.65-of-submissions)
+```py
+def removeDuplicates(self, nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    if len(nums) < 2:
+        return len(nums)
+
+    j = 0
+
+    for num in nums[1:]:
+        if num != nums[j]:
+            j += 1
+            nums[j] = num
+    return j+1
+```
