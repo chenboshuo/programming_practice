@@ -3,18 +3,16 @@ class Solution:
         if not nums:
           return 0
         i = 0
-        j = 0
         for _ in nums:
-          if nums[i] == nums[j]:
-            j += 1
+          if nums[i] == _:
+            continue
           else:
             i += 1
-            nums[i] = nums[j]
-            j += 1
+            nums[i] = _
 
         return i + 1
 
-# Runtime: 60 ms, 
-# faster than 80.85% of Python3 online submissions for Remove Duplicates from Sorted Array.
-# Memory Usage: 14.9 MB,
+# Runtime: 56 ms,
+# faster than 96.19% of Python3 online submissions for Remove Duplicates from Sorted Array.
+# Memory Usage: 14.8 MB,
 # less than 5.43% of Python3 online submissions for Remove Duplicates from Sorted Array.
