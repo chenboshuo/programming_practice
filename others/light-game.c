@@ -20,8 +20,13 @@
 int main(int argc, char const *argv[]) {
   int n;  // n盏灯
   int m;  // m个人
-  int light_on = 0; // 记录有没有灯
   scanf("%d %d", &n, &m);
+
+  if (m == 1) {
+    printf("No\n");
+    return 0;
+  }
+
   int *a = (int *)malloc(sizeof(int) * (n+1));
   for(int i = 1; i <= n; ++i){
     a[i] = -1;  // 一号把灯全部关闭
@@ -31,12 +36,8 @@ int main(int argc, char const *argv[]) {
       }
     }
     if(a[i] == 1){
-      light_on = 1;
       printf("%d ", i);
     }
-  }
-  if (!light_on) {
-    printf("No\n");
   }
   return 0;
 }
@@ -46,5 +47,5 @@ int main(int argc, char const *argv[]) {
  * Finished in 4 ms
  *
  * 输入: 5000 3000
- * Finished in 56 ms
+ * Finished in 52 ms
  */
