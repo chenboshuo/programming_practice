@@ -27,15 +27,15 @@ int main(int argc, char const *argv[]) {
     return 0;
   }
 
-  int *a = (int *)malloc(sizeof(int) * (n+1));
+  int light;
   for(int i = 1; i <= n; ++i){
-    a[i] = -1;  // 一号把灯全部关闭
+    light = 0;  // 一号把灯全部关闭
     for(int j = 2; j <= m; ++j){  // 从2号开始
       if (i % j == 0) {
-        a[i] *= -1;
+        light = !light;
       }
     }
-    if(a[i] == 1){
+    if(light){
       printf("%d ", i);
     }
   }
@@ -47,5 +47,5 @@ int main(int argc, char const *argv[]) {
  * Finished in 4 ms
  *
  * 输入: 5000 3000
- * Finished in 52 ms
+ * Finished in 44 ms
  */
