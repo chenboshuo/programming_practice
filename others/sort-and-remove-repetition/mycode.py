@@ -1,0 +1,6 @@
+input()
+a = set(input().split())
+print(len(a))
+a = sorted(list(map(int,a)))
+a = map(str, a)
+print(" ".join(a))
