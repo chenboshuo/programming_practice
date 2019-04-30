@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+int *p;
 /**
  * 代替for循环
  * @param a   目标数组
@@ -10,7 +10,7 @@
 void array(int* a, int len,int n){
   if (len == 0) {
     for(int i = 0; i < n; ++i){
-      printf("%d ", a[i]);
+      printf("%d ", p[i]);
     }
     return;
   }
@@ -22,8 +22,9 @@ void array(int* a, int len,int n){
 int main(int argc, char const *argv[]) {
   int n;
   // scanf("%d", &n);
-  n = 1;
+  n = 2;
   int *a = (int*) malloc(sizeof(int) * (n + 1));
+  p = a;
   array(a,n,n);
   return 0;
 }
