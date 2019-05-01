@@ -30,12 +30,12 @@ int next_permulation(int *a, int n){
   // interchange a[j] and a[k]
   a[j] ^= a[k]; a[k] ^= a[j]; a[j] ^= a[k];
 
-  int r = n - 1;
-  int s = j + 1;
-  while (r > s && r < n && s >= 0) {
+  k = n - 1;
+  ++j;
+  while (k > j && k < n && j >= 0) {
     // interchange a[r] and a[s]
-    a[r] ^= a[s]; a[s] ^= a[r]; a[r] ^= a[s];
-    --s;++r;
+    a[k] ^= a[j]; a[j] ^= a[k]; a[k] ^= a[j];
+    --j;++k;
   }
   return 1;
 
