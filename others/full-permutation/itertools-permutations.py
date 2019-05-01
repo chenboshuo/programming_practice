@@ -2,9 +2,10 @@
 from itertools import permutations
 
 n = int(input())
-for i in permutations(map(str,range(1,n+1)),n):
+for i in permutations(map(str,range(1,n+1))):
     print(" ".join(i))
 '''
+executed in 22ms
 input
 4
 
