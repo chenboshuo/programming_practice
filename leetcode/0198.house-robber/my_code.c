@@ -4,20 +4,20 @@
  * [198] House Robber
  */
 
-
-int rob(int* nums, int numsSize){
-    if(nums == 0){
-        return 0;
-    }
-    if(numsSize == 1){
-        return *nums;
-    }if(numsSize == 1){
-        return (*nums > *(nums+1) ? *nums : *(nums + 1));
-    }
-    int sum1 = *nums + rob(nums+2, numsSize -2);
-    int sum2 = rob(nums + 1, numsSize-1);
-    return (sum1 > sum2) ? sum1 : sum2;
-
+#define max(a, b) (a) > (b) ? (a) : (b)
+int rob(int *nums, int numsSize) {
+  if (numsSize == 0) {
+    return 0;
+  }
+  if (numsSize == 1) {
+    return *nums;
+  }
+  if (numsSize == 2) {
+    return max(*nums, *(nums + 1));
+  }
+  int sum1 = *nums + rob(nums + 2, numsSize - 2);
+  int sum2 = rob(nums + 1, numsSize - 1);
+  return max(sum1, sum2);
 }
 /*
 https://leetcode.com/submissions/detail/226865587/
