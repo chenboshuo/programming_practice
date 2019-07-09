@@ -18,8 +18,8 @@ int rob(int *nums, int numsSize) {
   memo = (int *)malloc(sizeof(int) * (numsSize + 1));
   memo[0] = 0;
   memo[1] = *nums;
-  for (int i = 2; i < numsSize + 1; ++i) {
-    memo[i] = max(memo[i - 1], memo[i - 2] + nums[i - 1]);
+  for (int i = 1; i < numsSize; ++i) {
+    memo[i + 1] = max(memo[i], memo[i - 1] + nums[i]);
   }
   return memo[numsSize];
 }
