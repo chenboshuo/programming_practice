@@ -24,6 +24,6 @@ int rob(int *nums, int numsSize) {
 }
 /*
 https://leetcode.com/submissions/detail/241941377/
-Runtime: 4 ms, faster than 74.29% of C online submissions for House Robber.
-Memory Usage: 7.2 MB, less than 10.64% of C online submissions for House Robber.
+Runtime: 0 ms, faster than 100.00% of C online submissions for House Robber.
+Memory Usage: 6.9 MB, less than 78.72% of C online submissions for House Robber.
  */
