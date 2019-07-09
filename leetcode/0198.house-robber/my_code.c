@@ -19,26 +19,12 @@ int rob(int *nums, int numsSize) {
   memo[0] = 0;
   memo[1] = *nums;
   for (int i = 2; i < numsSize + 1; ++i) {
-    memo[i] = -1;
+    memo[i] = max(memo[i - 1], memo[i - 2] + nums[i - 1]);
   }
-  if (numsSize > 1) {
-    memo[2] = max(*nums, *(nums + 1));
-  }
-  return solve(nums, numsSize);
-}
-
-int solve(int *nums, int numsSize) {
-  if (memo[numsSize] > -1) {
-    return memo[numsSize];
-  }
-  int sum1 =
-      nums[numsSize - 1] + solve(nums, numsSize - 2); // 头指针不能随便动了
-  int sum2 = solve(nums, numsSize - 1);
-  memo[numsSize] = max(sum1, sum2);
   return memo[numsSize];
 }
 /*
-https://leetcode.com/submissions/detail/241694540/
-Runtime: 4 ms, faster than 74.43% of C online submissions for House Robber.
-Memory Usage: 7 MB, less than 53.47% of C online submissions for House Robber.
+https://leetcode.com/submissions/detail/241941377/
+Runtime: 4 ms, faster than 74.29% of C online submissions for House Robber.
+Memory Usage: 7.2 MB, less than 10.64% of C online submissions for House Robber.
  */
