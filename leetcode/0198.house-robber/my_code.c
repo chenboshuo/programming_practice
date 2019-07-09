@@ -14,22 +14,19 @@ int rob(int *nums, int numsSize) {
   if (numsSize == 1) {
     return *nums;
   }
-  int pre = *nums;
-  int cur = nums[1];
-  for (int i = 2; i < numsSize; ++i) {
-    // memo[i + 1] = max(memo[i], memo[i - 1] + nums[i]);
+  int pre = 0;
+  int cur = *nums;
+  while (numsSize-- > 1) {
     int _ = cur;
-    cur = max(cur, pre + nums[i]);
+    cur = max(cur, pre + *(++nums));
     pre = _;
   }
   return cur;
 }
 /*
-https://leetcode.com/submissions/detail/241953507/
-Input:
-[2,1]
-Output:
-1
-Expected:
-2
+https://leetcode.com/submissions/detail/241954072/
+Runtime Error Message:
+AddressSanitizer: heap-buffer-overflow on address 0x602000000020 at pc
+0x00000040181b bp 0x7ffe0f7478f0 sp 0x7ffe0f7478e8 Last executed input:
+[1,2,3,1]
  */
