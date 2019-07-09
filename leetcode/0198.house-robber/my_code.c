@@ -5,25 +5,31 @@
  * reference:
  * https://leetcode.com/problems/house-robber/discuss/156523/From-good-to-great.-How-to-approach-most-of-DP-problems.
  */
-
-#include <stdlib.h>
 #define max(a, b) (a) > (b) ? (a) : (b)
-int *memo;
 
 int rob(int *nums, int numsSize) {
   if (numsSize == 0) {
     return 0;
   }
-  memo = (int *)malloc(sizeof(int) * (numsSize + 1));
-  memo[0] = 0;
-  memo[1] = *nums;
-  for (int i = 1; i < numsSize; ++i) {
-    memo[i + 1] = max(memo[i], memo[i - 1] + nums[i]);
+  if (numsSize == 1) {
+    return *nums;
   }
-  return memo[numsSize];
+  int pre = *nums;
+  int cur = nums[1];
+  for (int i = 2; i < numsSize; ++i) {
+    // memo[i + 1] = max(memo[i], memo[i - 1] + nums[i]);
+    int _ = cur;
+    cur = max(cur, pre + nums[i]);
+    pre = _;
+  }
+  return cur;
 }
 /*
-https://leetcode.com/submissions/detail/241941377/
-Runtime: 0 ms, faster than 100.00% of C online submissions for House Robber.
-Memory Usage: 6.9 MB, less than 78.72% of C online submissions for House Robber.
+https://leetcode.com/submissions/detail/241953507/
+Input:
+[2,1]
+Output:
+1
+Expected:
+2
  */
