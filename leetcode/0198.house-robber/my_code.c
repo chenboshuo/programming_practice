@@ -16,17 +16,34 @@ int rob(int *nums, int numsSize) {
   }
   int pre = 0;
   int cur = *nums;
-  while (numsSize-- > 1) {
+  for (int i = 1; i < numsSize; ++i) {
     int _ = cur;
-    cur = max(cur, pre + *(++nums));
+    cur = max(cur, pre + nums[i]);
     pre = _;
   }
   return cur;
 }
 /*
-https://leetcode.com/submissions/detail/241954072/
-Runtime Error Message:
-AddressSanitizer: heap-buffer-overflow on address 0x602000000020 at pc
-0x00000040181b bp 0x7ffe0f7478f0 sp 0x7ffe0f7478e8 Last executed input:
-[1,2,3,1]
+int rob(int *nums, int numsSize) {
+  if (numsSize==0) {
+    return 0;
+  }
+  if (numsSize == 1) {
+    return *nums;
+  }
+  int pre = 0;
+  int cur = *nums;
+  for(int i = 1; i<numsSize; ++i){
+    int _ = cur;
+    cur = max(cur, pre + nums[i]);
+    pre = _;
+  }
+  return cur;
+}
+https://leetcode.com/submissions/detail/241954839/
+69 / 69 test cases passed.
+Status: Accepted
+Runtime: 8 ms
+Memory Usage: 7.1 MB
+性能低了
  */
