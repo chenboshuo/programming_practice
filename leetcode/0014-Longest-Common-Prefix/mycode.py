@@ -14,9 +14,7 @@ class Solution:
           else:
             prefix += _
 '''
-https://leetcode.com/submissions/detail/247216397/
-Runtime Error Message:
-Line 10: IndexError: string index out of range
-Last executed input:
-["a"]
+https://leetcode.com/submissions/detail/247220843/
+Runtime: 48 ms, faster than 21.67% of Python3 online submissions for Longest Common Prefix.
+Memory Usage: 13.9 MB, less than 5.11% of Python3 online submissions for Longest Common Prefix.
 '''
