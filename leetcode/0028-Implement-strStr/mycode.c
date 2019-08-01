@@ -4,7 +4,7 @@ int strStr(char *haystack, char *needle) {
   }
   int j;
   for (int i = 0; haystack[i]; ++i) {
-    for (j = 0; haystack[i] == needle[j]; ++j) {
+    for (j = 0; haystack[i + j] == needle[j]; ++j) {
       ;
     }
     if (!needle[j]) { // needle[j] == '\0' 代表遍历完成
@@ -13,13 +13,11 @@ int strStr(char *haystack, char *needle) {
   }
   return -1;
 }
+
+// https://leetcode.com/submissions/detail/248043197/
 //
-// https://leetcode.com/submissions/detail/248042107/
-//
+// Runtime Error
+
 // Input
-// "aaa"
-// "aaaa"
-// Output
-// 0
-// Expected
-// -1
+// "a"
+// "a"
