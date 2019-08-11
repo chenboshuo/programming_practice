@@ -30,22 +30,18 @@ int strStr(char *haystack, char *needle) {
 
   // 根据next将对应索引移动到不匹配的位置
   for (int i = 0, j = 0; i < h_len; ++i) {
-    while (j > 0 && haystack[i] != needle[j]) {
+    while (j != -1 && haystack[i] != needle[j]) {
       j = next[j];
     }
     ++j;
     if (j == n_len) { // 通过长度对比(有可能出现j=-1的情况)
-      return i - j;
+      return i - j + 1;
     }
   }
   return -1;
 }
 
-// https://leetcode.com/submissions/detail/250707059/
-// Input:
-// "hello"
-// "ll"
-// Output:
-// 0
-// Expected:
-// 2
+// https://leetcode.com/submissions/detail/250709242/
+// Runtime: 4 ms, faster than 79.47% of C online submissions for Implement
+// strStr(). Memory Usage: 7.3 MB, less than 18.75% of C online submissions for
+// Implement strStr().
