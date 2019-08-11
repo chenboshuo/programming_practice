@@ -29,25 +29,23 @@ int strStr(char *haystack, char *needle) {
   }
 
   // 根据next将对应索引移动到不匹配的位置
-  for (int i = 0, j = 0; i + j < h_len;) {
-    for (; haystack[i + j] == needle[j] && i + j < h_len; ++j) {
-      ;
+  for (int i = 0, j = 0; i < h_len; ++i) {
+    while (j > 0 && haystack[i] != needle[j]) {
+      j = next[j];
     }
+    ++j;
     if (j == n_len) { // 通过长度对比(有可能出现j=-1的情况)
-      return i;
-    }
-    if ((j = next[j]) < 0) {
-      j = 0;
-      ++i;
-    } else {
-      i += j;
+      return i - j;
     }
   }
   return -1;
 }
 
-// https://leetcode.com/submissions/detail/250205045/
-// Time Limit Exceeded
-// Last executed input:
-// "mississippi"
-// "issipi"
+// https://leetcode.com/submissions/detail/250707059/
+// Input:
+// "hello"
+// "ll"
+// Output:
+// 0
+// Expected:
+// 2
