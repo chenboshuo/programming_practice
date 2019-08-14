@@ -42,14 +42,10 @@ int searchInsert_(int *nums, int numsSize, int target) {
       right = mid - 1;
     }
   }
-  return 0;
+  return left;
 }
 
-// https://leetcode.com/submissions/detail/251575639/
-// Input:
-// [1,3,5,6]
-// 2
-// Output:
-// 0
-// Expected:
-// 1
+// https://leetcode.com/submissions/detail/251576452/
+// Runtime: 4 ms, faster than 85.85% of C online submissions for Search Insert
+// Position. Memory Usage: 7.2 MB, less than 92.31% of C online submissions for
+// Search Insert Position.
