@@ -1,6 +1,6 @@
 # programming_practice
 some programing exercise from lanqiao, leetcode and so on.
-一些来自蓝桥杯\leetcode等地方的练习题
+一些来自蓝桥杯,leetcode等地方的练习题
 
 [![codebeat badge](https://codebeat.co/badges/ec233acd-cb47-45dd-8a5a-7ce84e680671)](https://codebeat.co/projects/github-com-chenboshuo-programming_practice-master)
 [![HitCount](http://hits.dwyl.io/chenboshuo/githubcom/chenboshuo/programming_practice.svg)](http://hits.dwyl.io/chenboshuo/githubcom/chenboshuo/programming_practice)
@@ -11,11 +11,12 @@ some programing exercise from lanqiao, leetcode and so on.
 # 目录
 > [Leetcode](./Leetcode)
 >
-> [flip_the_pancake 翻煎饼](./flip_the_pancake)
-
-编写一个程序用于指示这个栈如何被排序以使得最大的煎饼在最下面而最小的煎饼在最上面。
-
 > [others 其他练习程序](./others)
+>> [flip_the_pancake 翻煎饼](./others/flip_the_pancake)
+>>> 编写一个程序用于指示这个栈如何被排序以使得最大的煎饼在最下面而最小的煎饼在最上面。
+>>
+>> [fast_bridge_crossing 快速过桥](./others/fast_bridge_crossing)
+>>> 实现一种策略，让所有人在最短时间内通过。
 
 
 
