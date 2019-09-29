@@ -27,3 +27,6 @@ For the purpose of this problem, we will return 0 when needle is an empty string
 ### KMP算法
 -   [Knuth-Morris-Pratt algorithm](http://www.inf.fh-flensburg.de/lang/algorithmen/pattern/kmpen.htm)
 -   [动画：七分钟理解什么是KMP算法](https://mp.weixin.qq.com/s?__biz=MzUyNjQxNjYyMg==&mid=2247485939&idx=1&sn=b25f39b5644da92c4047bbbd9936f73c&chksm=fa0e6672cd79ef64dda0a21e23c2817edf4a64cbb75b9bed328d6519c6cd4fef36d03a4cb309)
+
+### Boyer-Moore
+-   [字符串搜索算法Boyer-Moore由浅入深](https://www.cnblogs.com/lanxuezaipiao/p/3452579.html)
