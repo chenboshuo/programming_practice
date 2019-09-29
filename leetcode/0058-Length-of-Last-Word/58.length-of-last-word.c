@@ -7,28 +7,21 @@
 // @lc code=start
 
 int lengthOfLastWord(char *s) {
-  int len = 0;  // 记录字符串长度
-  while (*s) {
-    if (*s == ' ') {
-      if (!*(s + 1)) {
-        return len;
-      } else {
-        len = -1;
-      }
-    }
-    len++;
-    s++;
+  int len = 0;
+  while (*s && *s != ' ') {
+    ++len;
+    ++s;
   }
-  return len;
+  while (*s == ' ') { ++s; }
+  if (*s == '\0') {
+    return len;
+  } else {
+    return lengthOfLastWord(s);
+  }
 }
 
-// https://leetcode.com/submissions/detail/265307721/
-// Wrong Answer
-// Details
-// Input
-// "b   a    "
-// Output
-// 0
-// Expected
-// 1
+// https://leetcode.com/submissions/detail/265318438/
+// Runtime: 4 ms, faster than 57.85% of C online submissions for Length of Last
+// Word. Memory Usage: 6.8 MB, less than 100.00% of C online submissions for
+// Length of Last Word.
 // @lc code=end
