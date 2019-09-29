@@ -1,22 +1,45 @@
-#include <limits.h>
+#include<limits.h>
 
-int maxSubArray(int *nums, int numsSize) {
-  int this_sum, max_sum;
-
-  max_sum = INT_MIN;
-  for (int i = 0; i < numsSize; ++i) {
-    this_sum = 0;
-    for (int j = i; j < numsSize; ++j) {
-      this_sum += nums[j];
-      if (this_sum > max_sum) {
-        max_sum = this_sum;
-      }
+int max_subsum(const int* nums, int left, int right){
+    if(left == right){ // base case
+        return nums[left];
     }
-  }
-  return max_sum;
+
+    int center = (left + right)/2;
+    int max_left_sum = max_subsum(nums, left, center);
+    int max_right_sum = max_subsum(nums, center+1, right);
+
+    int max_left_border_sum = INT_MIN,left_boder_sum=0;
+    for(int i = center; i>=left; --i){
+        left_boder_sum += nums[i];
+        if(left_boder_sum > max_left_border_sum){
+            max_left_border_sum = left_boder_sum;
+        }
+    }
+
+    int max_right_border_sum = INT_MIN,right_boder_sum=0;
+    for(int i = center+1; i<=right; ++i){
+        right_boder_sum += nums[i];
+        if(right_boder_sum > max_right_border_sum){
+            max_right_border_sum = right_boder_sum;
+        }
+    }
+
+    int max = max_right_border_sum + max_left_border_sum;
+    if(max < max_left_sum){
+        max = max_left_sum;
+    }
+    if(max < max_right_sum){
+        max = max_right_sum;
+    }
+
+    return max;
 }
 
-// https://leetcode.com/submissions/detail/257712574/
-// Runtime: 288 ms, faster than 7.24% of C online submissions for Maximum
-// Subarray. Memory Usage: 7.7 MB, less than 15.79% of C online submissions for
-// Maximum Subarray.
+int maxSubArray(int* nums, int numsSize){
+    return max_subsum(nums, 0, numsSize-1);
+}
+
+// https://leetcode.com/submissions/detail/265301189/
+// Runtime: 8 ms, faster than 68.95% of C online submissions for Maximum Subarray.
+// Memory Usage: 7.5 MB, less than 94.74% of C online submissions for Maximum Subarray.
