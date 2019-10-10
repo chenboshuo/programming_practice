@@ -2,51 +2,45 @@
 #include <string.h>
 
 bool isValid(char* s) {
-  int brackets[strlen(s) + 2];
-  int* p = brackets + 1;
+  char brackets[strlen(s) + 2];
+  int pb = 0;
   for (int i = 0; s[i]; i++) {
     switch (s[i]) {
       case '(':
-        *p = 1;
-        p++;
+      case '[':
+      case '{':
+        brackets[pb++] = s[i];
         break;
       case ')':
-        if (*(p - 1) == 1) {
-          p--;
+        if (pb > 0 && brackets[pb - 1] == '(') {
+          --pb;
         } else {
           return false;
         }
-        break;
-      case '[':
-        *p = 2;
-        p++;
         break;
       case ']':
-        if (*(p - 1) == 2) {
-          p--;
+        if (pb > 0 && brackets[pb - 1] == '[') {
+          --pb;
         } else {
           return false;
         }
         break;
-      case '{':
-        *p = 3;
-        p++;
-        break;
       case '}':
-        if (*(p - 1) == 3) {
-          p--;
+        if (pb > 0 && brackets[pb - 1] == '{') {
+          --pb;
         } else {
           return false;
         }
         break;
     }
   }
-  if (p != brackets + 1) {
+  if (pb != 0) {
     return false;
   }
   return true;
 }
-// Runtime: 4 ms, faster than 69.72% of C online submissions for Valid
+// Runtime: 0 ms, faster than 100.00% of C online submissions for Valid
 // Parentheses.
-// Memory Usage: 7.3 MB, less than 64.10% of C online submissions
-// for Valid Parentheses.
+
+// Memory Usage: 6.7 MB, less than 100.00% of C online submissions for Valid
+// Parentheses.
