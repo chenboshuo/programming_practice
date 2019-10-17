@@ -1,6 +1,6 @@
 # programming_practice
-some programing exercise from lanqiao, leetcode and so on.
-一些来自蓝桥杯,leetcode等地方的练习题
+some programing exercise from lanqiao, LeetCode and so on.
+一些来自蓝桥杯,LeetCode等地方的练习题
 
 [![codebeat badge](https://codebeat.co/badges/ec233acd-cb47-45dd-8a5a-7ce84e680671)](https://codebeat.co/projects/github-com-chenboshuo-programming_practice-master)
 [![HitCount](http://hits.dwyl.io/chenboshuo/githubcom/chenboshuo/programming_practice.svg)](http://hits.dwyl.io/chenboshuo/githubcom/chenboshuo/programming_practice)
