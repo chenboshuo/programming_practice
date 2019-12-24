@@ -30,22 +30,31 @@ bool isPossibleDivide(int* nums, int numsSize, int k){
     int pre = nums[begin];
     int i=0;
     for(i=1; begin+i<numsSize;++i){
-      if(count == k){
-        break;
-      }
+
       if(nums[begin+i] == pre + 1){
         has_visited[begin+i] = true;
         pre = nums[begin+i];
         ++count;
       }
-    }
-    // 上一个循环没有达到条件, 错误
-    if(count != k){
-      return false;
+      if(count == k){
+        break;
+      }
     }
     if(begin+i == numsSize){
       return true;
     }
 
+    // 上一个循环没有达到条件, 错误
+    if(count != k){
+      return false;
+    }
+
+
   }
 }
+
+// Runtime Error Message:
+// AddressSanitizer: heap-buffer-overflow on address 0x60200000011f at pc 0x000000401b46 bp 0x7ffc1ba90db0 sp 0x7ffc1ba90da8
+// Last executed input:
+// [10,9,8,1,2,3,2,3,4,4,5,6,10,11,12]
+// 3
