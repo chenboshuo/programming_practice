@@ -9,6 +9,9 @@ bool isPossibleDivide(int* nums, int numsSize, int k){
   if(numsSize % k != 0){
     return false;
   }
+  if(k == 1){
+    return true;
+  }
   bool* has_visited = (bool*) malloc(sizeof(bool) * numsSize);
   for(int i = 0; i<numsSize;++i){
     has_visited[i] = false;
@@ -21,14 +24,14 @@ bool isPossibleDivide(int* nums, int numsSize, int k){
         break;
       }
     }
-    // if(begin == numsSize){ // 如果自然结束循环, 说明所有元素均正常访问
-    //   return true;
-    // }
+    if(begin == numsSize){ // 如果自然结束循环, 说明所有元素均正常访问
+      return true;
+    }
 
     has_visited[begin] = true;
     int count = 1;
     int pre = nums[begin];
-    int i=0;
+    int i;
     for(i=1; begin+i<numsSize;++i){
 
       if(nums[begin+i] == pre + 1){
@@ -53,8 +56,10 @@ bool isPossibleDivide(int* nums, int numsSize, int k){
   }
 }
 
-// Runtime Error Message:
-// AddressSanitizer: heap-buffer-overflow on address 0x60200000011f at pc 0x000000401b46 bp 0x7ffc1ba90db0 sp 0x7ffc1ba90da8
-// Last executed input:
-// [10,9,8,1,2,3,2,3,4,4,5,6,10,11,12]
-// 3
+// Input:
+// [15,16,17,18,19,16,17,18,19,20,6,7,8,9,10,3,4,5,6,20]
+// 5
+// Output:
+// true
+// Expected:
+// false
