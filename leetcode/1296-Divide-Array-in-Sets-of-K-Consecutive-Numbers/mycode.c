@@ -10,13 +10,13 @@ bool isPossibleDivide(int* nums, int numsSize, int k){
     return false;
   }
   qsort(nums, numsSize, sizeof(int), comp);
-  // int n_group = numsSize/k;
+  int n_group = numsSize/k;
   int n_zero = 0;
   int delta;
 
-  for(int i = 1; i < numsSize; ++i){
+  for(int i = 1; i < numsSize && (i % n_group != 0); ++i){
     delta = nums[i] - nums[i-1];
-    if(delta > 1){
+    if(delta > 1){ // 前后两数差大于1
       return false;
     }
     if(delta == 0){
@@ -32,11 +32,10 @@ bool isPossibleDivide(int* nums, int numsSize, int k){
   return true;
 }
 
-// https://leetcode.com/submissions/detail/289091950/
+// https://leetcode.com/submissions/detail/289094225/
 // Wrong Answer
-// Details
 // Input
-// [3,2,1,2,3,4,3,4,5,9,10,11]
+// [12,12,2,11,22,20,11,13,3,21,1,13]
 // 3
 // Output
 // false
