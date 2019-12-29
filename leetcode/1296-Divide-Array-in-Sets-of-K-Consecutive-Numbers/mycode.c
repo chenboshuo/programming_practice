@@ -11,25 +11,18 @@ bool isPossibleDivide(int* nums, int numsSize, int k){
   }
   qsort(nums, numsSize, sizeof(int), comp);
   int n_group = numsSize/k;
-  int n_zero = 0;
-  int delta;
+  int *groups = (int*)malloc(sizeof(int)* n_group);
+  int begin = 0;
+  int active = 1;
 
-  for(int i = 1; i < numsSize && (i % n_group != 0); ++i){
-    delta = nums[i] - nums[i-1];
-    if(delta > 1){ // 前后两数差大于1
-      return false;
-    }
-    if(delta == 0){
-      ++n_zero;
-      if(n_zero + 1 > k){
-        return false;
-      }
-    }else{
-      n_zero = 0;
+  while(begin<n_group){
+    for(int i=0; i<active;++i){
+      
     }
   }
-
+  free(groups);
   return true;
+
 }
 
 // https://leetcode.com/submissions/detail/289094225/
