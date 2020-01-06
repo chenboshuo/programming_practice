@@ -45,12 +45,13 @@ int main(int argc, char const *argv[]) {
   search(1, 1);
 
   // 查看迷宫
-  // for (int i = 0; i < LINESIZE + 2; ++i) {
-  //   for (int j = 0; j < COLUMNSIZE + 2; ++j) {
-  //     printf("%c", maze[i][j]);
-  //   }
-  //   printf("\n");
-  // }
+  for (int i = 0; i < LINESIZE + 2; ++i) {
+    for (int j = 0; j < COLUMNSIZE + 2; ++j) {
+      printf("%c", maze[i][j]);
+    }
+    printf("\n");
+  }
+  printf("\n");
 
   // 打印
   for (int i = 0; i < pp; ++i) {
@@ -81,7 +82,7 @@ void back(int i, int j) {
 }
 
 void search(int i, int j) {
-  if ((i == LINESIZE - 2) && (j == COLUMNSIZE - 2)) {  // 到达终点
+  if ((i == LINESIZE) && (j == COLUMNSIZE)) {  // 到达终点
     return;
   }
 
@@ -112,3 +113,5 @@ void search(int i, int j) {
   back(i, j);
   return;
 }
+
+// DDDDRRURRRRRRDRRRRDDDLDDLDLDDLDLDDLDDLDDRDDDDDLLDLDDLLDDRRRRRURRRUUURRDRDDRRURURRDDRRRRRURRRRRRULULLLLLLULUURRRURRUURRRDDLDDDRRDRRDDDRRRRUURUULURUUUULULLUULURURRRRUULLLUUUULLUUULUULLDLLUUURRRRRRDDDRRUUURURRRDDRRRRRDDRRDDLLLDDRRDDLDLDDRRDDLLDDLLLDLDDDLDDDDDDDRRRRRRRUULLLLLURUURRRRRRDDDDDDRR
