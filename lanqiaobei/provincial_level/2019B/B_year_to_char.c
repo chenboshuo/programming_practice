@@ -10,3 +10,6 @@ int main(int argc, char *argv[]){
   }
   printf("\n");
 }
+
+// QYB
+// 注意倒序

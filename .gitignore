@@ -1,3 +1,14 @@
 *.exe
 *.o
 .vscode
+
+linux cpp on what I set the sa of cpp
+*.out
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
