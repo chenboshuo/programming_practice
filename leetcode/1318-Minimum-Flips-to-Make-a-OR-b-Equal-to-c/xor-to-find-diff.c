@@ -7,9 +7,15 @@ int minFlips(int a, int b, int c){
       if(c % 2 == 1){
         ++ count;
       }else{
-        count += 2;
+        if(a % 2==1 || b%2 == 1){
+          ++count;
+        }else{
+          count += 2;
+        }
       }
     }
+    a >>= 1;
+    b >>= 1;
     c >>= 1;
     delta >>= 1;
   }
@@ -18,15 +24,17 @@ int minFlips(int a, int b, int c){
 
 
 
-// 9 / 64 test cases passed.
+
+
+// 20 / 64 test cases passed.
 // Status: Wrong Answer
 // Submitted: 2 weeks, 3 days ago
 // Input:
-// 8
-// 3
+// 2
+// 6
 // 5
 // Output:
-// 5
+// 2
 // Expected:
 // 3
-// https://leetcode.com/contest/weekly-contest-171/submissions/detail/293403612/
+// https://leetcode.com/contest/weekly-contest-171/submissions/detail/293404972/
