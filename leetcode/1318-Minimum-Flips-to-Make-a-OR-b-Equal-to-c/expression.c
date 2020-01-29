@@ -1,7 +1,7 @@
 #include <math.h>
 int minFlips(int a, int b, int c){
   int ai,bi,ci,count=0;
-  while(c){
+  while(a||b||c){
     ai = a&1;
     bi = b&1;
     ci = c&1;
@@ -12,14 +12,6 @@ int minFlips(int a, int b, int c){
   }
   return count;
 }
-// Wrong Answer
-// Details
-// Input
-// 8
-// 3
-// 5
-// Output
-// 2
-// Expected
-// 3
-// https://leetcode.com/submissions/detail/298404236/
+// Runtime: 4 ms, faster than 45.83% of C online submissions for Minimum Flips to Make a OR b Equal to c.
+// Memory Usage: 6.8 MB, less than 100.00% of C online submissions for Minimum Flips to Make a OR b Equal to c.
+// https://leetcode.com/submissions/detail/298406966/
