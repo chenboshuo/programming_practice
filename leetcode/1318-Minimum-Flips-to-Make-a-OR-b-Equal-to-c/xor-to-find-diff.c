@@ -1,40 +1,30 @@
 int minFlips(int a, int b, int c){
-  int ans = a | b;
-  int delta = ans ^ c;
+  int a_or_b = a | b;
   int count = 0;
-  while(delta){
-    if(delta % 2 == 1){
-      if(c % 2 == 1){
-        ++ count;
+  for(int diff = c ^ a_or_b; diff; diff >>= 1,a>>=1,b>>=1,c>>=1){
+    // 如果有差别, 处理
+    if(diff & 1){
+      // 如果c最低位为1, 则说明 a|b 最后一位为0,只需一位变成1
+      if(c&1){
+        ++count;
       }else{
-        if(a % 2==1 || b%2 == 1){
-          ++count;
+        // a,b 最后一位都是1, c最低位为0,改2个
+        if(a&b&1){
+          count+=2;
         }else{
-          count += 2;
+          ++count;
         }
       }
     }
-    a >>= 1;
-    b >>= 1;
-    c >>= 1;
-    delta >>= 1;
+
   }
   return count;
+
 }
 
 
 
 
-
-// 20 / 64 test cases passed.
-// Status: Wrong Answer
-// Submitted: 2 weeks, 3 days ago
-// Input:
-// 2
-// 6
-// 5
-// Output:
-// 2
-// Expected:
-// 3
-// https://leetcode.com/contest/weekly-contest-171/submissions/detail/293404972/
+// Runtime: 4 ms, faster than 45.83% of C online submissions for Minimum Flips to Make a OR b Equal to c.
+// Memory Usage: 6.8 MB, less than 100.00% of C online submissions for Minimum Flips to Make a OR b Equal to c.
+// https://leetcode.com/submissions/detail/298397390/
