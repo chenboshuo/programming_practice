@@ -1,8 +1,8 @@
 # cource: https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/discuss/457625/Python-Counter-Solution
-import collections
+from collections import Counter
 class Solution:
     def isPossibleDivide(self, nums: List[int], k: int) -> bool:
-        count=collections.Counter(nums)
+        count=Counter(nums)
         keys=sorted(count.keys())
         for n in keys:
             if count[n]>0:
