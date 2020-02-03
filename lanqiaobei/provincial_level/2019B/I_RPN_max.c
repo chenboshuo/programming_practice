@@ -38,7 +38,6 @@ int comp(const void *a, const void *b) {
   return *(long int *)a - *(long int *)b;
 }
 
-
 /**
  * 寻找后缀表达式最大值
  * @param  nums      数组
@@ -93,6 +92,7 @@ long long int max_RPN(long int *nums, size_t nums_size, size_t minus) {
  * {2, -3, -4, +, -}:      9
  * {-1,-2,-3,+,-}: 4
  * {-1,-2,0,-,-}:  3
+ * {1,-1,-2,-1,+,-,-}:     5
  *
  */
 void test() {
@@ -107,10 +107,14 @@ void test() {
 
   long a4[3] = {-1, -2, 0};
   printf("{-1,-2,0,-,-}:\t%lld\n", max_RPN(a4, 3, 2));
+
+  long a5[4] = {1, -1, -2, -1};
+  printf("{1,-1,-2,-1,+,-,-}:\t%lld\n", max_RPN(a5, 4, 2));
 }
 
 int main(int argc, char const *argv[]) {
-  // test();
+  test();
+  return 0;
 
   size_t plus, minus;
   scanf("%ld %ld", &plus, &minus);
