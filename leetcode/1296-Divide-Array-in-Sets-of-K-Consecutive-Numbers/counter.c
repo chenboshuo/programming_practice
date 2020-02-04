@@ -19,7 +19,7 @@ bool isPossibleDivide(int* nums, int numsSize, int k) {
   while (--numsSize) {
     if (*nums == pre) {
       ++count[ptr_count];
-    } else if (*nums = pre + 1) {
+    } else if (*nums == pre + 1) {
       ptr_count++;
       count[ptr_count] = 1;
     } else {
@@ -44,10 +44,13 @@ bool isPossibleDivide(int* nums, int numsSize, int k) {
 
   return true;
 }
-// [5,6,7,8,9,6,7,8,9,10,11,12,13,14,15,12,13,14,15,19]
-// 5
-// Output:
-// true
-// Expected:
+
+// Details
+// Input
+// [3,2,1,2,3,4,3,4,5,9,10,11]
+// 3
+// Output
 // false
-// https://leetcode.com/submissions/detail/300121730/
+// Expected
+// true
+// https://leetcode.com/submissions/detail/300134411/
