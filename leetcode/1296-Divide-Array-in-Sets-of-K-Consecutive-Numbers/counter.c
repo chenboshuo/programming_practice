@@ -10,7 +10,7 @@ bool isPossibleDivide(int* nums, int numsSize, int k) {
   qsort(nums, numsSize, sizeof(int), comp);
 
   // 统计数字出现次数
-  int count[numsSize];
+  int count[numsSize * 2];
   size_t ptr_count = 0;
   // int pre = *nums;
   count[0] = 1;
@@ -22,8 +22,11 @@ bool isPossibleDivide(int* nums, int numsSize, int k) {
     } else if (*nums == pre + 1) {
       ptr_count++;
       count[ptr_count] = 1;
-    } else {
-      return false;
+    } else {  // 有可能数字间断, 那存储的时候也间断
+      ptr_count++;
+      count[ptr_count] = 0;
+      ptr_count++;
+      count[ptr_count] = 1;
     }
     pre = *nums;
     ++nums;
@@ -45,12 +48,8 @@ bool isPossibleDivide(int* nums, int numsSize, int k) {
   return true;
 }
 
-// Details
-// Input
-// [3,2,1,2,3,4,3,4,5,9,10,11]
-// 3
-// Output
-// false
-// Expected
-// true
-// https://leetcode.com/submissions/detail/300134411/
+// Runtime: 80 ms, faster than 80.00% of C online submissions for Divide Array
+// in Sets of K Consecutive Numbers.
+// Memory Usage: 13.4 MB, less than 100.00% of
+// C online submissions for Divide Array in Sets of K Consecutive Numbers.
+// https://leetcode.com/submissions/detail/300135774/
