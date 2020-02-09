@@ -2,22 +2,14 @@ from collections import Counter
 class Solution:
     def minSetSize(self, arr: List[int]) -> int:
       a = Counter(arr)
-      half = len(arr)/2
-      # return range(1,len(a)+1)
-
-      # for i in range(1,len(a)+1):
-      #   if sum(i[1] for i in a.most_common(i)) >= half:
-      #     return i
-      count = 0
+      half = len(arr)//2
       total = 0
-      for i in sorted(a.values())[::-1]:
+      for index,i in enumerate(sorted(Counter(arr).values(), reverse=True)):
         total += i
-        count += 1
         if total >= half:
-          return count;
-
-# https://leetcode.com/submissions/detail/299439534/
-# 31 / 31 test cases passed.
-# Status: Accepted
-# Runtime: 1204 ms
-# Memory Usage: 29 MB
+          return index+1;
+        
+# https://leetcode.com/submissions/detail/301640520/
+# Runtime: 832 ms, faster than 26.18% of Python3 online submissions
+# Memory Usage: 33.2 MB, less than 100.00% of Python3 online submissions.
+# reference https://leetcode.com/problems/reduce-array-size-to-the-half/discuss/496703/Python-Simple-Greedy-Solution-using-Counter-and-Sorting
