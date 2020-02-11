@@ -1,45 +1,39 @@
-struct Counter{
-  int value;
-  int count;
-};
-
-int by_value(void const*a, void const*b){
+int cascade(void const*a, void const*b){
   return *(int*)a - *(int*)b;
 }
 
-int by_count(void const *a, void const*b){
-  return ((struct Counter*)b) -> count - ((struct Counter*)a) -> count;
+int descend(void const*a, void const*b){
+  return *(int*)b - *(int*)a;
 }
 
 int minSetSize(int* arr, int arrSize){
-  qsort(arr, arrSize, sizeof(int), by_value);
-  struct Counter counter[arrSize];
-  struct Counter *p = counter-1;
+  qsort(arr, arrSize, sizeof(int), cascade);
+  int counter[arrSize];
   int pre = 0;
   int counter_size = 0;
   int half = arrSize/2;
   while(arrSize--){
     if(*arr == pre){
-      ++(p->count);
+      ++counter[counter_size-1];
     }else{
-      ++p;
-      p->value = *arr;
-      p->count = 1;
-      pre = *arr;
+      counter[counter_size] = 1;
       ++counter_size;
+      pre = *arr;
     }
     ++arr;
   }
+  // ++counter_size;
 
-  qsort(counter, counter_size, sizeof(struct Counter), by_count);
+  qsort(counter, counter_size, sizeof(int), descend);
   int sum = 0;
   for(int i=0; i<counter_size; ++i){
-    sum += counter[i].count;
+    sum += counter[i];
     if(sum >= half){
       return i+1;
     }
   }
   return counter_size;
 }
-// Runtime: 140 ms, faster than 52.63% .
-// Memory Usage: 16.8 MB, less than 100.00% .
+// https://leetcode.com/submissions/detail/302299822/
+// Runtime: 140 ms, faster than 52.63% of C online submissions for Reduce Array Size to The Half.
+// Memory Usage: 16.2 MB, less than 100.00% of C online submissions for Reduce Array Size to The Half.
