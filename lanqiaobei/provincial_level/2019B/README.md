@@ -123,7 +123,9 @@ BYQ
 ```
 
 ## E 迷宫
--   [代码](E_maze.c)
+-   [栈](E_maze.c)
+-   [栈(递归)](E_maze_recursion.c)
+-   [队列](E_maze_queue.c)
 
 本题总分：15 分
 
