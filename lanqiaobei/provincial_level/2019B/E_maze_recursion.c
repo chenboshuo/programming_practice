@@ -3,12 +3,14 @@
 #include <time.h>
 #include <unistd.h>
 
-#define ROW_SIZE 5
-#define COLUMN_SIZE 21
+#define ROW_SIZE 30
+#define COLUMN_SIZE 50
 // #define END '4'
 #define VISITED '_'  // 记录已访问
 
 char maze[ROW_SIZE][COLUMN_SIZE];  // 存储迷宫
+char path[30000];
+int pp = 0;
 
 bool search(int i, int j);  // 搜索函数
 
@@ -44,13 +46,13 @@ int main(int argc, char const *argv[]) {
   // 搜索
   search(0, 0);
 
-  // 加几个空格防止缓冲区没东西
-  int n = 500;
-  while (n--) {
-    printf(" ");
+  print_maze();
+
+  // printf("%d\n", pp);
+  for (int i = 0; i < pp; ++i) {
+    printf("%c", path[i]);
   }
   printf("\n");
-  print_maze();
 
   // 计时
   end = time(NULL);
@@ -62,37 +64,38 @@ bool search(int i, int j) {
   // 越界回退
   if ((i < 0) || (i > ROW_SIZE - 1) || (j < 0) || (j > COLUMN_SIZE - 1) ||
       (maze[i][j] == VISITED) || (maze[i][j] == '1')) {
-    printf("\b");
-    // printf("-");
+    // printf("\b");
+    --pp;
     return false;
   }
 
   // 标记访问
   maze[i][j] = VISITED;
 
-  // print_maze();
-  // printf("-");
-  // sleep(1);
-
   // 返回
   if (
-      // (maze[i][j] == END)
-      ((i == ROW_SIZE - 1) && (j == COLUMN_SIZE - 1)) ||
-      (printf("D"), search(i + 1, j))     // 向下搜索
-      || (printf("L"), search(i, j - 1))  // 向左搜索
-      || (printf("R"), search(i, j + 1))  // 向右搜索
-      || (printf("U"), search(i - 1, j))  // 向上搜索
+      // ((i == ROW_SIZE - 1) && (j == COLUMN_SIZE - 1)) ||
+      // (printf("D"), search(i + 1, j))     // 向下搜索
+      // || (printf("L"), search(i, j - 1))  // 向左搜索
+      // || (printf("R"), search(i, j + 1))  // 向右搜索
+      // || (printf("U"), search(i - 1, j))  // 向上搜索
+      ((i == ROW_SIZE - 1) && (j == COLUMN_SIZE - 1))  // 到终点
+      || (path[pp++] = 'D', search(i + 1, j))          // 向下搜索
+      || (path[pp++] = 'L', search(i, j - 1))          // 向左搜索
+      || (path[pp++] = 'R', search(i, j + 1))          // 向右搜索
+      || (path[pp++] = 'U', search(i - 1, j))          // 向上搜索
   ) {
     return true;
   } else {
-    printf("\b");
+    // printf("\b");
+    --pp;
+    // ;
     // printf("-");
     return false;
   }
 }
 
 // 递归生成结果(本程序)
-// DDDDRRURRRRRRDRRRRDDDLDDLDLDDLDLDDLDDLDDRDDDDDLLDLDDLLDDRRRRRURRRUUURRDRDDRRURURRDDRRRRRURRRLDULUURRRURRUULLULLDDLLLDDLLDLLLUULLLDLLUURRURRRULUULLDDLLUURUURRRURRRUULURRURULLUULURRRURRRUULDRRRDDLDDDRRDRRDDDRRRRUURUULURUUUULULLUULURURRRRUULLLUUUULLUUULUULLDLLUUURRRRRRDDDRRUUURURRRDDDRRRRRDDRRDDLLLDDRRDDLDLDDRRDDLLDDLLLDLDDDLDDDDDDDRRRRRRRUULLLLLURUURRRRRRDDDDDDRR
-
+// DDDDRRURRRRRRDRRRRDDDLDDLDLDDLDLDDLDDLDDRDDDDDLLDLDDLLDDRRRRRURRRUUURRDRDDRRURURRDDRRRRRURRRRRRULULLLLLLULUURRRURRUURRRDDLDDDRRDRRDDDRRRRUURUULURUUUULULLUULURURRRRUULLLUUUULLUUULUULLDLLUUURRRRRRDDDRRUUURURRRDDRRRRRDDRRDDLLLDDRRDDLDLDDRRDDLLDDLLLDLDDDLDDDDDDDRRRRRRRUULLLLLURUURRRRRRDDDDDDRR
 // 迭代生成结果
 // DDDDRRURRRRRRDRRRRDDDLDDLDLDDLDLDDLDDLDDRDDDDDLLDLDDLLDDRRRRRURRRUUURRDRDDRRURURRDDRRRRRURRRRRRULULLLLLLULUURRRURRUURRRDDLDDDRRDRRDDDRRRRUURUULURUUUULULLUULURURRRRUULLLUUUULLUUULUULLDLLUUURRRRRRDDDRRUUURURRRDDRRRRRDDRRDDLLLDDRRDDLDLDDRRDDLLDDLLLDLDDDLDDDDDDDRRRRRRRUULLLLLURUURRRRRRDDDDDDRR
