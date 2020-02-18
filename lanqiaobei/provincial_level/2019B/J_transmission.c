@@ -106,6 +106,13 @@
 #define min(a, b) (((a) < (b)) ? (a) : (b))
 #define abs(x) ((x < 0) ? -(x) : (x))
 
+/**
+ * 比较是否要传递能量
+ * @param  nums    数组
+ * @param  center  可以传递能量的中心节点
+ * @param  pre_max 不传能量的最大值
+ * @return         center为中心的数组的最大值
+ */
 long trans(long *nums, size_t center, long pre_max) {
   if (center < 1) {
     return pre_max;
@@ -123,8 +130,22 @@ long trans(long *nums, size_t center, long pre_max) {
   }
   return pre_max;
 }
-
-long transmission(long *nums, size_t nums_size) {
+/**
+ * 线性查找
+ * 暴力破解, 比较传输后和传输前的能量值决定是否传递能量
+ * 问题:
+ * 局部的短视,如
+ *test 7:
+ *[6, -4, 2, -7, 3]
+ *Expect: 5
+ *Output: 7
+ *为了让能量减小,-4不应该传递能量
+ *
+ * @param  nums      表示能量的数组
+ * @param  nums_size 数组大小
+ * @return           最终的绝对值的最大值
+ */
+long linear_search(long *nums, size_t nums_size) {
   for (size_t i = 1; i < nums_size - 1; ++i) {
     long local_max = max(max(abs(nums[i]), abs(nums[i - 1])), abs(nums[i + 1]));
     trans(nums, i, local_max);
@@ -138,23 +159,6 @@ long transmission(long *nums, size_t nums_size) {
   return global_max;
 }
 
-// long transmission(long *nums, size_t left, size_t right) {
-//   if (left == right) {
-//     return abs(nums[left]);
-//   }
-//   size_t center = (left + right) / 2;
-//   long left_max = transmission(nums, left, center);
-//   long right_max = transmission(nums, center + 1, right);
-//   long no_trans = max(left_max, right_max);
-
-//   // 数组长度是3, 考虑传输能量
-//   if (right - left == 2) {
-//     return trans(nums, left + 1, no_trans);
-//   }
-
-//   // 不输送能量返回每部分最大值
-//   return no_trans;
-// }
 
 void test(long (*func)(long *nums, size_t nums_size)) {
   long t1[3] = {5, -2, 3};
@@ -221,7 +225,62 @@ void test(long (*func)(long *nums, size_t nums_size)) {
 }
 
 int main(int argc, char const *argv[]) {
-  test(transmission);
-
+  test(linear_search);
+  /*
+   * test 1:
+   * [5,-2,3]
+   * Expect: 3
+   * Output: 3
+   *
+   * test 2:
+   * [0, 0, 0, 0]
+   * Expect: 0
+   * Output: 0
+   *
+   * test 3:
+   * [1, 2, 3]
+   * Expect: 3
+   * Output: 3
+   *
+   * test 4:
+   * [-1, -2, -3, 7]
+   * Expect: 5
+   * Output: 5
+   *
+   * test 5:
+   * [2, 3, 4, -8]
+   * Expect: 7
+   * Output: 7
+   *
+   *test 6:
+   *[-1, -1, 6, -1, -1]
+   *Expect: 4
+   *Output: 4
+   *
+   *test 7:
+   *[6, -4, 2, -7, 3]
+   *Expect: 5
+   *Output: 7
+   *
+   *test 8:
+   *[-99, -53, 43, 80, -83, 72, 99, 78, -63, -9]
+   *Expect: 88
+   *Output: 99
+   *
+   *test 9:
+   * [37387389...]
+   * Expect: 88
+   * Output: 997449600
+   *
+   * test 10:
+   * [9, 9, -1, 4, 7]
+   * Expect: 9
+   * Output: 9
+   *
+   * test 11:
+   * [0, 0, 0, 9, -1, -2, 6, 0]
+   * Expect: 7
+   * Output: 8
+   */
   return 0;
 }
