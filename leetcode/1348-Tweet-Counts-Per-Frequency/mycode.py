@@ -15,12 +15,12 @@ class TweetCounts:
         time_during = {'minute': 60, 'hour':3600, 'day': 86400}
         delta = time_during[freq]
         n_duration = (endTime - startTime) // delta + 1
-        ans = [0 for _ in range(n_duration)]
+        ans = [0]* n_duration
 
         for time in self.user_time[tweetName]:
           if startTime<= time <= endTime:
             ans[(time-startTime) // delta]+=1
-
+        
         return ans
 
 
@@ -30,5 +30,6 @@ class TweetCounts:
 # obj.recordTweet(tweetName,time)
 # param_2 = obj.getTweetCountsPerFrequency(freq,tweetName,startTime,endTime)
 
-# Runtime: 456 ms, faster than 38.58% of Python3 online submissions for Tweet Counts Per Frequency.
+
+# Runtime: 444 ms, faster than 40.45% of Python3 online submissions for Tweet Counts Per Frequency.
 # Memory Usage: 20.3 MB, less than 100.00% of Python3 online submissions for Tweet Counts Per Frequency.
