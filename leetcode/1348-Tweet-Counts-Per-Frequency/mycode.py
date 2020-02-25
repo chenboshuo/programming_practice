@@ -1,13 +1,11 @@
+from collections import defaultdict
 class TweetCounts:
 
     def __init__(self):
-        self.user_time = {}
+        self.user_time = defaultdict(list)
 
     def recordTweet(self, tweetName: str, time: int) -> None:
-      try:
-        self.user_time[tweetName].append(time)
-      except:
-        self.user_time[tweetName] = [time]
+      self.user_time[tweetName].append(time)
 
       self.user_time[tweetName].sort()
 
@@ -31,3 +29,6 @@ class TweetCounts:
 # obj = TweetCounts()
 # obj.recordTweet(tweetName,time)
 # param_2 = obj.getTweetCountsPerFrequency(freq,tweetName,startTime,endTime)
+
+# Runtime: 456 ms, faster than 38.58% of Python3 online submissions for Tweet Counts Per Frequency.
+# Memory Usage: 20.3 MB, less than 100.00% of Python3 online submissions for Tweet Counts Per Frequency.
