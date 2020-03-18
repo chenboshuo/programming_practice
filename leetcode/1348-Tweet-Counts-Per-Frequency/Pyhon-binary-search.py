@@ -1,3 +1,4 @@
+# reference https://leetcode.com/problems/tweet-counts-per-frequency/discuss/503447/Python-binary-search
 from collections import defaultdict
 from bisect import insort, bisect_left
 class TweetCounts:
@@ -25,3 +26,6 @@ class TweetCounts:
 # obj = TweetCounts()
 # obj.recordTweet(tweetName,time)
 # param_2 = obj.getTweetCountsPerFrequency(freq,tweetName,startTime,endTime)
+
+# Runtime: 376 ms, faster than 70.69% of Python3 online submissions for Tweet Counts Per Frequency.
+# Memory Usage: 20.5 MB, less than 100.00% of Python3 online submissions for Tweet Counts Per Frequency.
