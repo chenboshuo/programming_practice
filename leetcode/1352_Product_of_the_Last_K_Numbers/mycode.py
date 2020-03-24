@@ -1,19 +1,25 @@
+import numpy as np
+
+
 class ProductOfNumbers:
 
     def __init__(self):
         self.nums = []
 
     def add(self, num: int) -> None:
-        for i in range(len(self.nums)):
-            self.nums[i] *= num
+        # if num != 0:
+        # for i in range(len(self.nums)):
+        #   self.nums[i] *= num
         self.nums.append(num)
 
     def getProduct(self, k: int) -> int:
-        return self.nums[-k]
+        # return self.nums[-k]
         # ans = 1
         # for i in self.nums[-k:]:
         #   ans *= i
         # return ans
+        return np.product(self.nums[-k:])
+
 # Your ProductOfNumbers object will be instantiated and called as such:
 # obj = ProductOfNumbers()
 # obj.add(num)
@@ -22,4 +28,4 @@ class ProductOfNumbers:
 
 # 30 / 33 test cases passed.
 # Status: Time Limit Exceeded
-# https://leetcode.com/contest/weekly-contest-176/submissions/detail/303662240/
+# https://leetcode.com/contest/weekly-contest-176/submissions/detail/303667250/
