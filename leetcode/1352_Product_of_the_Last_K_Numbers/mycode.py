@@ -1,4 +1,4 @@
-import numpy as np
+# import numpy as np
 
 
 class ProductOfNumbers:
@@ -16,6 +16,7 @@ class ProductOfNumbers:
         else:
             self.nums = [0 for _ in self.nums]
             self.nums.append(0)
+            self.product = 1
 
     def getProduct(self, k: int) -> int:
         # return self.nums[-k]
@@ -24,8 +25,6 @@ class ProductOfNumbers:
         #   ans *= i
         # return ans
         # return np.product(self.nums[-k:])
-        if k == len(self.nums):
-            return self.product
         p = self.nums[-k]
         if p == 0:
             return 0
@@ -38,14 +37,9 @@ class ProductOfNumbers:
 # obj.add(num)
 # param_2 = obj.getProduct(k)
 
-# 25 / 33 test cases passed.
-# Status: Wrong Answer
+# 33 / 33 test cases passed.
+# Status: Accepted
+# Runtime: 1920 ms (10.8%)
+# Memory Usage: 43.5 MB
 # Submitted: 1 month ago
-# Input:
-# ["ProductOfNumbers","add","add","add","getProduct","add","add","add","getProduct","getProduct","getProduct","add","add"]
-# [[],[0],[0],[9],[3],[8],[3],[8],[5],[4],[6],[8],[8]]
-# Output:
-# [null,null,null,null,9,null,null,null,0,1728,1728,null,null]
-# Expected:
-# [null,null,null,null,0,null,null,null,0,1728,0,null,null]
-# https://leetcode.com/contest/weekly-contest-176/submissions/detail/303687207/
+# https://leetcode.com/contest/weekly-contest-176/submissions/detail/303692689/
