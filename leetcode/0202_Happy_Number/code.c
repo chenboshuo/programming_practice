@@ -23,19 +23,16 @@ bool _isHappy(int n) {
 }
 
 bool isHappy(int n) {
-  for (int i = 0; i < 1000; ++i) {
+  for (int i = 0; i < 10000; ++i) {
     happy[i] = -1;
   }
   return _isHappy(n);
 }
 
-// https://leetcode.com/submissions/detail/318571153/
-// 343 / 401 test cases passed.
-// Status: Wrong Answer
+// https://leetcode.com/submissions/detail/318571714/
+// 350 / 401 test cases passed.
+// Status: Runtime Error
 // Submitted: 17 hours, 12 minutes ago
-// Input:
-// 1221
-// Output:
-// false
-// Expected:
-// true
+// Runtime Error Message:
+// Line 10: Char 12: runtime error: index 1111111 out of bounds for type 'int
+// [10000]' (solution.c) Last executed input: 1111111
