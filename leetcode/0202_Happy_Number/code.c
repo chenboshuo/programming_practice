@@ -1,27 +1,40 @@
 #include <math.h>
+#include <stdbool.h>
+#include <stdio.h>
+int happy[10000];
 
-bool isHappy(int n) {
+bool _isHappy(int n) {
   if (n == 1) {
     return true;
   }
-  if (n / 10 == 0) {
-    return false;
+  if (happy[n] != -1) {
+    return happy[n];
   }
 
+  happy[n] = 0;
   int sum_squares = 0;
-  while (n) {
-    sum_squares += pow(n % 10, 2);
-    n /= 10;
+  int digits = n;
+  while (digits) {
+    sum_squares += pow(digits % 10, 2);
+    digits /= 10;
   }
-  return isHappy(sum_squares);
+  happy[n] = _isHappy(sum_squares);
+  return happy[n];
 }
 
-// https://leetcode.com/submissions/detail/318555120/
-// 399 / 401 test cases passed.
+bool isHappy(int n) {
+  for (int i = 0; i < 1000; ++i) {
+    happy[i] = -1;
+  }
+  return _isHappy(n);
+}
+
+// https://leetcode.com/submissions/detail/318571153/
+// 343 / 401 test cases passed.
 // Status: Wrong Answer
-// Submitted: 18 hours, 4 minutes ago
+// Submitted: 17 hours, 12 minutes ago
 // Input:
-// 7
+// 1221
 // Output:
 // false
 // Expected:
