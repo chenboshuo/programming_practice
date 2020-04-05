@@ -5,20 +5,17 @@ void moveZeroes(int* nums, int numsSize) {
   for (int fast = 0; fast < numsSize; ++fast) {
     if (nums[fast] != 0) {
       // exchange
-      nums[slow] ^= nums[fast];
-      nums[fast] ^= nums[slow];
-      nums[slow] ^= nums[fast];
+      int temp = nums[fast];
+      nums[fast] = nums[slow];
+      nums[slow] = temp;
       ++slow;
     }
   }
 }
 
-// 9 / 21 test cases passed.
-// Status: Wrong Answer
-// Submitted: 15 hours, 34 minutes ago
-// Input:
-// [1]
-// Output:
-// [0]
-// Expected:
-// [1]
+// Submission Detail
+// 21 / 21 test cases passed.
+// Status: Accepted
+// Runtime: 12 ms
+// Memory Usage: 7.2 MB
+// Submitted: 15 hours, 20 minutes ago
