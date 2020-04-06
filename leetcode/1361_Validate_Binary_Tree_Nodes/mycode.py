@@ -9,7 +9,9 @@ class Solution:
         for i, children in enumerate(zip(leftChild, rightChild)):
             for child in children:
                 if child != NULL:
-                    if parents[child] != INIT:  # parent 被替换
+                    if parents[child] == NULL:  # change root
+                        parents[i] = NULL
+                    elif parents[child] != INIT:  # parent 被替换
                         return False
                     # 标记parent
                     parents[child] = i
@@ -19,14 +21,14 @@ class Solution:
         return True
 
 
-# Wrong Answer
-# Details
-# Playground Debug
-# Input
+# 32 / 33 test cases passed.
+# Status: Wrong Answer
+# Submitted: 11 minutes ago
+# Input:
 # 2
-# [-1, 0]
+# [1, 0]
 # [-1, -1]
-# Output
-# false
-# Expected
+# Output:
 # true
+# Expected:
+# false
