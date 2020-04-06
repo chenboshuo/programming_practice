@@ -9,7 +9,7 @@ class Solution:
         for i, children in enumerate(zip(leftChild, rightChild)):
             for child in children:
                 if child != NULL:
-                    if parents[child] == NULL:  # change root
+                    if parents[i] == INIT and parents[child] == NULL:  # change root
                         parents[i] = NULL
                     elif parents[child] != INIT:  # parent 被替换
                         return False
@@ -20,15 +20,6 @@ class Solution:
 
         return True
 
-
-# 32 / 33 test cases passed.
-# Status: Wrong Answer
-# Submitted: 11 minutes ago
-# Input:
-# 2
-# [1, 0]
-# [-1, -1]
-# Output:
-# true
-# Expected:
-# false
+# https://leetcode.com/submissions/detail/320622588/
+# Runtime: 464 ms, faster than 7.90% of Python3 online submissions for Validate Binary Tree Nodes.
+# Memory Usage: 15.5 MB, less than 100.00% of Python3 online submissions for Validate Binary Tree Nodes.
