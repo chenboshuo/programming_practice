@@ -37,12 +37,12 @@ int gcd(int a, int b) {
   return gcd(b, a % b);
 }
 
+int lcm(int a, int b) { return a * b / gcd(a, b); }
+
 int main(int argc, char const *argv[]) {
   int a, b, c;
   scanf("%d %d %d", &a, &b, &c);
-  int m = a * b * c;
-  int factor = gcd(a, b) * gcd(a, c) * gcd(b, c);
-  printf("%d\n", m / factor);
+  printf("%d\n", lcm(lcm(a, b), c));
 
   return 0;
 }
