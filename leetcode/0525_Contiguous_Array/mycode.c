@@ -2,12 +2,12 @@
 
 int findMaxLength(int* nums, int nums_size) {
   int d = 0;  // d = m-n, where m in the number of m, n is the number of n
-  int memo[nums_size + 2];  // record the index that memo[index] == d
-  int* p_memo = memo + nums_size / 2 + 1;  // enable the negatve subscription
-  int max_length = 0;                      // storage the max length
+  int memo[nums_size * 2 + 4];         // record the index that memo[index] == d
+  int* p_memo = memo + nums_size + 2;  // enable the negatve subscription
+  int max_length = 0;                  // storage the max length
 
   // initialize memo
-  for (int i = 0; i < nums_size + 2; ++i) {
+  for (int i = 0; i < nums_size * 2 + 4; ++i) {
     memo[i] = INIT;
   }
 
@@ -36,10 +36,8 @@ int findMaxLength(int* nums, int nums_size) {
 }
 
 
-// 6 / 555 test cases passed.
-// Status: Runtime Error
-// Submitted: 15 minutes ago
-// Runtime Error Message:
-// AddressSanitizer: dynamic-stack-buffer-overflow on address 0x7fff9e619908 at pc 0x000000401ae6 bp 0x7fff9e6198b0 sp 0x7fff9e6198a0
-// Last executed input:
-// [1,1,1,1,1,1,1,1]
+// 555 / 555 test cases passed.
+// Status: Accepted
+// Runtime: 88 ms
+// Memory Usage: 10 MB
+// Submitted: 24 minutes ago
