@@ -1,9 +1,10 @@
 #define INIT -2
+#define max(a, b) ((a) > (b) ? (a) : (b))
 
 int findMaxLength(int* nums, int nums_size) {
   int d = 0;  // d = m-n, where m in the number of m, n is the number of n
   int memo[nums_size * 2 + 4];         // record the index that memo[index] == d
-  int* p_memo = memo + nums_size + 2;  // enable the negatve subscription
+  int* p_memo = memo + nums_size + 2;  // enable the negative subscription
   int max_length = 0;                  // storage the max length
 
   // initialize memo
@@ -22,22 +23,13 @@ int findMaxLength(int* nums, int nums_size) {
     }
 
     if (p_memo[d] != INIT) {
-      int length = i - p_memo[d];
-
-      if (length > max_length) {
-        max_length = length;
-      }
+      max_length = max(i - p_memo[d], max_length);
     } else {
       p_memo[d] = i;
     }
   }
-  // return d;
   return max_length;
 }
 
-
-// 555 / 555 test cases passed.
-// Status: Accepted
-// Runtime: 88 ms
-// Memory Usage: 10 MB
-// Submitted: 24 minutes ago
+// Runtime: 84 ms, faster than 87.50% of C online submissions for Contiguous Array.
+// Memory Usage: 9.9 MB, less than 100.00% of C online submissions for Contiguous Array.
