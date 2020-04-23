@@ -1,6 +1,6 @@
-int rangeBitwiseAnd(int m, int n) {
-  int result = m;
-  for (size_t i = m + 1; i <= n; ++i) {
+long int rangeBitwiseAnd(long int m, long int n) {
+  long int result = m;
+  for (long int i = m + 1; i <= n; ++i) {
     result &= i;
     if (result == 0) {
       return 0;
@@ -9,12 +9,8 @@ int rangeBitwiseAnd(int m, int n) {
   return result;
 }
 
-
-// 8265 / 8266 test cases passed.
-// Status: Runtime Error
-// Submitted: 51 minutes ago
-// Runtime Error Message:
-// Line 5: Char 17: runtime error: signed integer overflow: 2147483647 + 1 cannot be represented in type 'int' (solution.c)
-// Last executed input:
-// 2147483647
-// 2147483647
+// 8266 / 8266 test cases passed.
+// Status: Accepted
+// Runtime: 444 ms
+// Memory Usage: 5.3 MB
+// Submitted: 52 minutes ago
