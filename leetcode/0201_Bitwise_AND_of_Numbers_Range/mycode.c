@@ -1,16 +1,16 @@
-long int rangeBitwiseAnd(long int m, long int n) {
-  long int result = m;
-  for (long int i = m + 1; i <= n; ++i) {
-    result &= i;
-    if (result == 0) {
-      return 0;
-    }
+// reference
+// https://leetcode.com/problems/bitwise-and-of-numbers-range/discuss/56753/Accepted-C-solution-with-simple-explanation
+int rangeBitwiseAnd(int m, int n) {
+  int exponent = 0;
+  while (m != n) {
+    m >>= 1;
+    n >>= 1;
+    ++exponent;
   }
-  return result;
+  return m << exponent;
 }
 
-// 8266 / 8266 test cases passed.
-// Status: Accepted
-// Runtime: 444 ms
-// Memory Usage: 5.3 MB
-// Submitted: 52 minutes ago
+// Runtime: 4 ms, faster than 90.98% of C online submissions for Bitwise AND of
+// Numbers Range. Memory Usage: 5.5 MB, less than 100.00% of C online
+// submissions for Bitwise AND of Numbers Range.
+// https://leetcode.com/submissions/detail/328933174/
