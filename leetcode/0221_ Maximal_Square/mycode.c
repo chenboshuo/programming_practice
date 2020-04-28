@@ -2,6 +2,7 @@
 
 int maximalSquare(char** matrix, int matrix_size, int* matrix_col_size) {
   int memo[matrix_size + 1][*matrix_col_size + 1];
+  memo[0][0] = 0;  // for [] case
   for (int i = 0; i < matrix_size + 1; ++i) {
     for (int j = 0; j < *matrix_col_size + 1; ++j) {
       if (i == 0 || j == 0) {
