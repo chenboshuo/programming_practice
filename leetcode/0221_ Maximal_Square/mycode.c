@@ -11,8 +11,8 @@ int maximalSquare(char** matrix, int matrix_size, int* matrix_col_size) {
         memo[i][j] = 0;
       } else if (matrix[i - 1][j - 1] == '1' &&
                  memo[i][j - 1] == memo[i - 1][j] &&
-                 (i == 1 || matrix[i - 2][i - 1] == '1') &&
-                 (j == 1 || matrix[i - 1][i - 2] == '1')) {
+                 (i == 1 || j == 1 || matrix[i - 2][i - 1] == '1') &&
+                 (i == 1 || j == 1 || matrix[i - 1][i - 2] == '1')) {
         memo[i][j] = memo[i - 1][j - 1] + 1;
       } else {
         memo[i][j] = max(memo[i - 1][j], memo[i][j - 1]);
@@ -23,10 +23,13 @@ int maximalSquare(char** matrix, int matrix_size, int* matrix_col_size) {
   return side_length * side_length;
 }
 
-// 5 / 69 test cases passed.
-// Status: Runtime Error
-// Submitted: 18 hours, 24 minutes ago
-// Runtime Error Message:
-// AddressSanitizer: heap-buffer-overflow on address 0x6020000002ef at pc 0x000000401ff4 bp 0x7fffa258ba50 sp 0x7fffa258ba40
-// Last executed input:
-// [["0","1"]]
+
+// 19 / 69 test cases passed.
+// Status: Wrong Answer
+// Submitted: 6 hours, 3 minutes ago
+// Input:
+// [["0","0","0","0","0"],["0","0","0","0","0"],["0","0","0","0","1"],["0","0","0","0","0"]]
+// Output:
+// 0
+// Expected:
+// 1
