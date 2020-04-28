@@ -6,23 +6,24 @@ int maximalSquare(char** matrix, int matrix_size, int* matrix_col_size) {
     return 0;
   }
   int side_length = 0;
-  int memo[matrix_size + 1][*matrix_col_size + 1];
-  for (int i = 0; i < matrix_size + 1; ++i) {
-    for (int j = 0; j < *matrix_col_size + 1; ++j) {
-      if (i == 0 || j == 0 || matrix[i - 1][j - 1] == '0') {
-        memo[i][j] = 0;
+  char memo[*matrix_col_size + 1];
+  int pre = 0;
+  memset(memo, 0, *matrix_col_size + 1);
+  for (int i = 1; i < matrix_size + 1; ++i) {
+    for (int j = 1; j < *matrix_col_size + 1; ++j) {
+      int temp = memo[j];
+      if (matrix[i - 1][j - 1] == '1') {
+        memo[j] = min(min(memo[j], memo[j - 1]), pre) + 1;
+        side_length = max(side_length, memo[j]);
       } else {
-        memo[i][j] =
-            min(min(memo[i - 1][j], memo[i][j - 1]), memo[i - 1][j - 1]) + 1;
-        side_length = max(side_length, memo[i][j]);
+        memo[j] = 0;
       }
+      pre = temp;
     }
   }
 
   return side_length * side_length;
 }
 
-// 69 / 69 test cases passed.
-// Status: Accepted
-// Runtime: 12 ms
-// Memory Usage: 7.2 MB
+// Runtime: 16 ms, faster than 88.75% of C online submissions for Maximal Square.
+// Memory Usage: 7.1 MB, less than 100.00% of C online submissions for Maximal Square.
