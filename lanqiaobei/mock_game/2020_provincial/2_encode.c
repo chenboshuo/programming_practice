@@ -16,9 +16,8 @@ odqtldr
 */
 #include <stdio.h>
 void encode(char* s) {
-  int diff;
   while (*s) {
-    diff = *s - 'a';
+    int diff = *s - 'a';
     diff = (diff + 3) % 26;
     *s = 'a' + diff;
     ++s;
@@ -27,7 +26,7 @@ void encode(char* s) {
 
 int main(int argc, char const* argv[]) {
   char s[101];
-  scanf("%s", s);
+  scanf("%100s", s);
   encode(s);
   printf("%s\n", s);
 
