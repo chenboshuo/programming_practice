@@ -10,7 +10,8 @@
  *
  *         现在小明要把相同深度的节点的权值加在一起，他想知道哪个深度的节点
  *             权值之和最大？如果有多个深度的权值和同为最大，请你输出其中最小的深度。
- * 注：根的 深* 度是 1。 【输入格式】 第一行包含一个整数 N。 第二行包含 N 个整数
+ * 注：根的 深* 度是 1。 
+ * 【输入格式】 第一行包含一个整数 N。 第二行包含 N 个整数
  * A 1, A 2, ··· A N 。
  *
  * 【输出格式】
@@ -36,10 +37,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 long long int brute_force(long long *tree, size_t tree_size) {
-  long long int max_depth = 1;
+  long long int max_depth = 0;
   long long int max = 0;
-  long long int depth = 1;  // 根的深度定义为1
+  long long int depth = 0;  
   long long int sum = 0;    // 当前节点的权的和
   for (size_t i = 0; i < tree_size; ++i) {
     if (i + 1 == pow(2, depth)) {
@@ -64,14 +66,14 @@ long long int brute_force(long long *tree, size_t tree_size) {
 int main(int argc, char const *argv[]) {
   size_t tree_size;
   // long long tree[tree_size];
+  scanf("%ld", &tree_size);
   long long *tree = (long long *)malloc(sizeof(long long) * tree_size);
 
-  scanf("%lld", &tree_size);
   for (size_t i = 0; i < tree_size; ++i) {
     scanf("%lld", tree + i);
   }
 
-  printf("%lld\n", brute_force(tree, 8));
+  printf("%lld\n", brute_force(tree, tree_size));
 
   return 0;
 }
