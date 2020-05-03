@@ -41,32 +41,48 @@ int main(int argc, char const *argv[]) {
   int index, pre_num;
   for (pre_num = 0; pre_num <= range; pre_num++) {
     for (index = 0; index < length + 1; ++index) {
-      memo[pre_num][index] = -1;
+      memo[pre_num][index] = 0;
     }
     // index == length + 1, 表示索引在长度之外 -> 数没有用完
     memo[pre_num][index] = 1;
   }
 
-  int next_num(int pre_num, int index) {
-    if (memo[pre_num][index] != -1) {
-      return memo[pre_num][index];
-    }
-    int i;
-    int count = 0;
-    if (index & 1) {  // 奇数比前一项大
-      for (i = pre_num + 1; i <= range; ++i) {
-        count = (count + next_num(i, index + 1)) % 10000;
+  // int next_num(int pre_num, int index) {
+  //   if (memo[pre_num][index] != -1) {
+  //     return memo[pre_num][index];
+  //   }
+  //   int i;
+  //   int count = 0;
+  //   if (index & 1) {  // 奇数比前一项大
+  //     for (i = pre_num + 1; i <= range; ++i) {
+  //       count = (count + next_num(i, index + 1)) % 10000;
+  //     }
+  //   } else {  // 偶数项比前小
+  //     for (i = 1; i < pre_num; ++i) {
+  //       count = (count + next_num(i, index + 1)) % 10000;
+  //     }
+  //   }
+  //   memo[pre_num][index] = count;
+  //   return count;
+  // }
+
+  for(int index = length+1;index> -1; --index){
+    for(int pre_num = 0; pre_num <= range; ++pre_num){
+      if (index & 1) {  // 奇数比前一项大
+        for(int i= pre_num + 1;i<=range;++i){
+          memo[pre_num][index] =
+              (memo[pre_num][index] + memo[i][index + 1]) % 10000;
+        }
+      } else {  // 偶数项比前小
+        for(int i=1;i<pre_num;++i){
+          memo[pre_num][index] =
+              (memo[pre_num][index] + memo[i][index + 1]) % 10000;
+        }
       }
-    } else {  // 偶数项比前小
-      for (i = 1; i < pre_num; ++i) {
-        count = (count + next_num(i, index + 1)) % 10000;
-      }
     }
-    memo[pre_num][index] = count;
-    return count;
   }
 
-  printf("%d\n", next_num(0, 1));  // index 从1开始,前一位当做0
+  printf("%d\n", memo[0][1]);  // index 从1开始,前一位当做0
   return 0;
 }
 
@@ -74,4 +90,10 @@ int main(int argc, char const *argv[]) {
 // time ./4_series.out
 // 999 899
 // 5210
-// ./4_series.out  3.00s user 0.01s system 26% cpu 11.370 total
+// ./4_series.out  3.44s user 0.01s system 26% cpu 11.370 total
+
+// dp
+// $ time ./4_series.out
+// 999 899
+// 5210
+// ./4_series.out  2.64s user 0.01s system 39% cpu 6.739 total
