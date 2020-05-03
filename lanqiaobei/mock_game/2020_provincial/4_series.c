@@ -1,9 +1,8 @@
 /*
 问题描述
-　　如果一个序列的奇数项都比前一项大，偶数项都比前一项小，则称为一个摆动序列。即 a[2i]<a[2i-1], a[2i+1]>a[2i]。
-　　小明想知道，长度为 m，每个数都是 1 到 n 之间的正整数的摆动序列一共有多少个。
-输入格式
-　　输入一行包含两个整数 m，n。
+　　如果一个序列的奇数项都比前一项大，偶数项都比前一项小，则称为一个摆动序列。即
+a[2i]<a[2i-1], a[2i+1]>a[2i]。 　　小明想知道，长度为 m，每个数都是 1 到 n
+之间的正整数的摆动序列一共有多少个。 输入格式 　　输入一行包含两个整数 m，n。
 输出格式
 　　输出一个整数，表示答案。答案可能很大，请输出答案除以10000的余数。
 样例输入
@@ -32,21 +31,30 @@
 　　对于 80% 的评测用例，1 <= n, m <= 100；
 　　对于所有评测用例，1 <= n, m <= 1000。
 */
-#include <stdio.h> 
+#include <stdio.h>
 int main(int argc, char const *argv[]) {
   int length;
   int range;
   scanf("%d %d", &length, &range);
-  
-  
-  int next_num(int pre_num, int index){
-    if(index == length+1){
-      return 1;
+  int memo[range + 1][length + 2];  // pre_num <= range, index <= length+1
+
+  int index, pre_num;
+  for (pre_num = 0; pre_num <= range; pre_num++) {
+    for (index = 0; index < length + 1; ++index) {
+      memo[pre_num][index] = -1;
+    }
+    // index == length + 1, 表示索引在长度之外 -> 数没有用完
+    memo[pre_num][index] = 1;
+  }
+
+  int next_num(int pre_num, int index) {
+    if (memo[pre_num][index] != -1) {
+      return memo[pre_num][index];
     }
     int i;
     int count = 0;
-    if(index & 1){ // 奇数比前一项大
-      for(i=pre_num+1;i<=range;++i){
+    if (index & 1) {  // 奇数比前一项大
+      for (i = pre_num + 1; i <= range; ++i) {
         count = (count + next_num(i, index + 1)) % 10000;
       }
     } else {  // 偶数项比前小
@@ -54,9 +62,16 @@ int main(int argc, char const *argv[]) {
         count = (count + next_num(i, index + 1)) % 10000;
       }
     }
+    memo[pre_num][index] = count;
     return count;
   }
 
-  printf("%d\n",next_num(0,1));
+  printf("%d\n", next_num(0, 1));  // index 从1开始,前一位当做0
   return 0;
 }
+
+// recursive
+// time ./4_series.out
+// 999 899
+// 5210
+// ./4_series.out  3.00s user 0.01s system 26% cpu 11.370 total
