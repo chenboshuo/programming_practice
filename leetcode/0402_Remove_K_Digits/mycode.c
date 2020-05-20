@@ -1,11 +1,12 @@
 #include <string.h>
 
 char *removeKdigits(char *num, int k) {
-  // int num_size = strlen(num);
+  int num_size = strlen(num);
+  if (k == num_size) { return "0"; }
   int fast;
   while (k) {
     int slow = 0;
-    for (fast = 1; num[fast]; ++fast) {
+    for (fast = 1; fast < num_size; ++fast) {
       if (num[fast] < num[slow] && k) {
         num[slow] = num[fast];
         --k;
@@ -14,16 +15,16 @@ char *removeKdigits(char *num, int k) {
       }
     }
     num[slow + 1] = '\0';
+    --num_size;
   }
 
-  if (*num == '\0') { return "0"; }
   while (*num == '0' && *(num + 1)) { ++num; }
   return num;
 }
 
-// 2 / 33 test cases passed.
+// 7 / 33 test cases passed.
 // Status: Time Limit Exceeded
 // Submitted: 5 days, 5 hours ago
 // Last executed input:
-// "10"
-// 2
+// "112"
+// 1
