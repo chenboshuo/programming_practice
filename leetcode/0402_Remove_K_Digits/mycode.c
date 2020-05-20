@@ -1,4 +1,9 @@
+#include <string.h>
+
 char * removeKdigits(char * num, int k){
+  if(k == strlen(num)){
+    return "0";
+  }
   int slow = 0;
   int fast;
   for(fast=1;num[fast];++fast){
