@@ -6,7 +6,7 @@ char *removeKdigits(char *num, int k) {
   char *ans = (char *)malloc((len_num + 1) * sizeof(char));
   int ans_p = 0;
   for (int i = 0; i < len_num; ++i) {
-    while (ans_p > 0 && num[i] < ans[ans_p - 1] && k--) { --ans_p; }
+    while (ans_p > 0 && num[i] < ans[ans_p - 1] && k-- > 0) { --ans_p; }
     ans[ans_p++] = num[i];
   }
 
@@ -21,14 +21,7 @@ char *removeKdigits(char *num, int k) {
   return *ans ? ans : "0";
 }
 
-// Submission Detail
-// 26 / 33 test cases passed.
-// Status: Wrong Answer
-// Submitted: 3 minutes ago
-// Input:
-// "43214321"
-// 4
-// Output:
-// "11"
-// Expected:
-// "1321"
+// https://leetcode.com/submissions/detail/347056291/
+// Runtime: 0 ms, faster than 100.00% of C online submissions for Remove K
+// Digits. Memory Usage: 5.7 MB, less than 100.00% of C online submissions for
+// Remove K Digits.
