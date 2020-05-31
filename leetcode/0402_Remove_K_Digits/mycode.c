@@ -2,25 +2,29 @@
 #include <string.h>
 char *removeKdigits(char *num, int k) {
   int len_num = strlen(num);
-  if (len_num == k) { return "0"; }
-  char *ans = (char *)malloc((len_num - k + 3) * sizeof(char));
+
+  char *ans = (char *)malloc((len_num) * sizeof(char));
   int ans_p = 0;
-  for (int i = 0; i <= len_num; ++i) {
-    while (ans_p > 0 && num[i] < ans[ans_p - 1] && k-- > 0) { --ans_p; }
+  for (int i = 0; i < len_num; ++i) {
+    while (ans_p > 0 && num[i] < ans[ans_p - 1] && k--) { --ans_p; }
     ans[ans_p++] = num[i];
   }
+
+  while (k > 0) {
+    --ans_p;
+    --k;
+  }
+
   ans[ans_p] = '\0';
   while (*ans == '0' && *(ans + 1)) { ++ans; }
 
-  return ans;
+  return *ans ? ans : "0";
 }
 
-// Submission Detail
-// 21 / 33 test cases passed.
+// 4 / 33 test cases passed.
 // Status: Runtime Error
-// Submitted: 2 days, 4 hours ago
+// Submitted: 4 minutes ago
 // Runtime Error Message:
-// AddressSanitizer: heap-buffer-overflow on address 0x602000000794 at pc
-// 0x000000401a69 bp 0x7ffc333203f0 sp 0x7ffc333203e0 Last executed input:
-// "1234567890"
-// 9
+// AddressSanitizer: heap-buffer-overflow on address 0x6020000001b1 at pc
+// 0x000000401c48 bp 0x7ffd7dbcaa30 sp 0x7ffd7dbcaa20 Last executed input: "0"
+// 0
