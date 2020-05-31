@@ -1,22 +1,25 @@
+#include <stdlib.h>
 #include <string.h>
-
 char *removeKdigits(char *num, int k) {
-  int num_size = strlen(num);
-  if (k == num_size) { return "0"; }
-  while (k) {
-    int i;
-    for (i = 0; num[i] && num[i] <= num[i + 1]; ++i) { ; }
-    if (num[i]) {
-      --k;
-      for (; num[i]; ++i) { num[i] = num[i + 1]; }
-    }
+  int len_num = strlen(num);
+  char *ans = (char *)malloc((len_num - k + 1) * sizeof(char));
+  int ans_p = 0;
+  while (*num) {
+    while (ans_p > 0 && *num < ans[ans_p - 1] && k--) { --ans_p; }
+    ans[ans_p++] = *num;
+    ++num;
   }
-
-  while (*num == '0' && *(num + 1)) { ++num; }
-  return num;
+  ans[ans_p] = '\0';
+  return ans;
 }
 
-// Runtime: 212 ms, faster than 7.91%
-// of C online submissions for Remove K Digits.
-// Memory Usage: 5.6 MB,
-// less than 100.00% of C online submissions for Remove K Digits.
+// 1 / 33 test cases passed.
+// Status: Wrong Answer
+// Submitted: 2 days, 5 hours ago
+// Input:
+// "10200"
+// 1
+// Output:
+// "0200"
+// Expected:
+// "200"
