@@ -2,9 +2,9 @@
 #include <string.h>
 char *removeKdigits(char *num, int k) {
   int len_num = strlen(num);
-  char *ans = (char *)malloc((len_num - k + 3) * sizeof(char));
-  ans[0] = '0';
-  int ans_p = 1;
+  if (len_num == k) { return "0"; }
+  char *ans = (char *)malloc((len_num - k + 2) * sizeof(char));
+  int ans_p = 0;
   while (*num) {
     while (ans_p > 0 && *num < ans[ans_p - 1] && k--) { --ans_p; }
     ans[ans_p++] = *num;
@@ -16,13 +16,14 @@ char *removeKdigits(char *num, int k) {
   return ans;
 }
 
-// 6 / 33 test cases passed.
+// Submission Detail
+// 7 / 33 test cases passed.
 // Status: Wrong Answer
 // Submitted: 2 days, 5 hours ago
 // Input:
-// "9"
+// "112"
 // 1
 // Output:
-// "9"
+// "112"
 // Expected:
-// "0"
+// "11"
