@@ -16,9 +16,7 @@ char *removeKdigits(char *num, int k) {
   return num;
 }
 
-// 7 / 33 test cases passed.
-// Status: Time Limit Exceeded
-// Submitted: 5 days, 5 hours ago
-// Last executed input:
-// "112"
-// 1
+// Runtime: 212 ms, faster than 7.91%
+// of C online submissions for Remove K Digits.
+// Memory Usage: 5.6 MB,
+// less than 100.00% of C online submissions for Remove K Digits.
