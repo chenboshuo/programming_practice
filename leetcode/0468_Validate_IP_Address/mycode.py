@@ -26,6 +26,15 @@ def is_ipv4(ip):
 
 class Solution:
     def validIPAddress(self, IP: str) -> str:
+        if '-' in IP:
+          return "Neither"
         if ':' in IP:
           return is_ipv6(IP)
         return is_ipv4(IP)
+
+# Input:
+# "2001:0db8:85a3:033:0:8A2E:0370:7334"
+# Output:
+# "Neither"
+# Expected:
+# "IPv6"
