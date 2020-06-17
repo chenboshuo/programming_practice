@@ -4,8 +4,8 @@ def is_ipv6(ip):
       return "Neither"
   for d in nums:
     try:
-      assert len(d) == 4 or d == '0'
       d = int(d,base=16)
+      assert 0 <= d <= int('ffff',base=16)
     except:
       return "Neither"
 
@@ -33,8 +33,8 @@ class Solution:
         return is_ipv4(IP)
 
 # Input:
-# "2001:0db8:85a3:033:0:8A2E:0370:7334"
+# "2001:0db8:85a3:00000:0:8A2E:0370:7334"
 # Output:
-# "Neither"
-# Expected:
 # "IPv6"
+# Expected:
+# "Neither"
