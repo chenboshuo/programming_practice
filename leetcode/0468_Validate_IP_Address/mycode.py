@@ -4,6 +4,7 @@ def is_ipv6(ip):
       return "Neither"
   for d in nums:
     try:
+      assert len(d) <= 4
       d = int(d,base=16)
       assert 0 <= d <= int('ffff',base=16)
     except:
@@ -32,9 +33,8 @@ class Solution:
           return is_ipv6(IP)
         return is_ipv4(IP)
 
-# Input:
-# "2001:0db8:85a3:00000:0:8A2E:0370:7334"
-# Output:
-# "IPv6"
-# Expected:
-# "Neither"
+# 79 / 79 test cases passed.
+# Status: Accepted
+# Runtime: 28 ms
+# Memory Usage: 13.7 MB
+# Submitted: 1 hour, 44 minutes ago
