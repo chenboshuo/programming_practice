@@ -1,18 +1,14 @@
-from collections import Counter
+from collections import defaultdict
 
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-        c = Counter(nums)
-        c = c.most_common()
-        i = 0
-        ans = 0
-        for _, t in c:
-          ans += t * (t-1) / 2
-        return int(ans)
+        counts = defaultdict(int)
+        result = 0
+        for i in nums:
+          result += counts[i]
+          counts[i] += 1
+        return result
 
 
-# 48 / 48 test cases passed.
-# Status: Accepted
-# Runtime: 72 ms
-# Memory Usage: 13.7 MB
-# Submitted: 3 days, 23 hours ago
+# Runtime: 56 ms, faster than 35.52% of Python3 online submissions for Number of Good Pairs.
+# Memory Usage: 13.8 MB, less than 100.00% of Python3 online submissions for Number of Good Pairs.
