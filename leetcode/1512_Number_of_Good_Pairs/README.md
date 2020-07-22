@@ -1,4 +1,4 @@
-> 本文由 [简悦 SimpRead](http://ksria.com/simpread/) 转码， 原文地址 [leetcode.com](https://leetcode.com/problems/number-of-good-pairs/)
+# 1512. Number of Good Pairs
 
 Given an array of integers `nums`.
 
