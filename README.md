@@ -8,6 +8,9 @@ some programing exercise from lanqiao, LeetCode and so on.
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/chenboshuo/programming_practice.svg)
 
+[![time tracker](https://wakatime.com/badge/github/chenboshuo/programming_practice.svg)](https://wakatime.com/badge/github/chenboshuo/programming_practice)
+
+
 
 # 目录
 > [Leetcode](./Leetcode)
