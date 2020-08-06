@@ -1,7 +1,7 @@
 // reference
 // https://leetcode.com/problems/find-all-duplicates-in-an-array/discuss/92390/Python-O(n)-time-O(1)-space
-#include <math.h>
 #include <stdlib.h>
+#define abs(x) ((x > 0) ? (x) : (-x))
 int *findDuplicates(int *nums, int numsSize, int *returnSize) {
   int *ans = (int *)malloc(sizeof(int) * (numsSize / 2));
   *returnSize = 0;
@@ -16,7 +16,6 @@ int *findDuplicates(int *nums, int numsSize, int *returnSize) {
   return ans;
 }
 
-// 28 / 28 test cases passed.
-// Status: Accepted
-// Runtime: 124 ms
-// Memory Usage: 16.9 MB
+// Runtime: 92 ms, faster than 99.09% of C online submissions for Find All
+// Duplicates in an Array. Memory Usage: 17 MB, less than 100.00% of C online
+// submissions for Find All Duplicates in an Array.
