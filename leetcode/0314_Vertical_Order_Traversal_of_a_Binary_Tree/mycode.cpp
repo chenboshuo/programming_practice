@@ -27,9 +27,9 @@ class Solution {
     for (pair<int, map<int, vector<int>>> item : memo) {
       vector<int> values;
       for (pair<int, vector<int>> y_val : item.second) {
+        sort(y_val.second.begin(), y_val.second.end());
         for (int i : y_val.second) { values.push_back(i); }
       }
-      sort(values.begin(), values.end());
       result.push_back(values);
     }
     return result;
@@ -45,8 +45,8 @@ class Solution {
   }
 };
 
-// [0,5,1,9,null,2,null,null,null,null,3,4,8,6,null,null,null,7]
-// Output:
-// [[7,9],[5,6],[0,2,4],[1,3],[8]]
-// Expected:
-// [[9,7],[5,6],[0,2,4],[1,3],[8]]
+// https://leetcode.com/submissions/detail/377366279/?from=/explore/challenge/card/august-leetcoding-challenge/549/week-1-august-1st-august-7th/3415/
+// 30 / 30 test cases passed.
+// Status: Accepted
+// Runtime: 4 ms
+// Memory Usage: 15 MB
