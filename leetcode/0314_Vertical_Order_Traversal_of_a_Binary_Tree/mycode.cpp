@@ -1,6 +1,8 @@
 /**
  * Definition for a binary tree node.
  */
+#include <bits/stdc++.h>  // sort
+
 #include <map>
 #include <vector>
 using namespace std;
@@ -19,25 +21,32 @@ class Solution {
  public:
   vector<vector<int>> verticalTraversal(TreeNode *root) {
     vector<vector<int>> result;
-    in_order_traversal(root, 0);
-    for (pair<int, vector<int>> item : memo) { result.push_back(item.second); }
+
+    in_order_traversal(root, 0, 0);
+
+    for (pair<int, map<int, vector<int>>> item : memo) {
+      vector<int> values;
+      for (pair<int, vector<int>> y_val : item.second) {
+        for (int i : y_val.second) { values.push_back(i); }
+      }
+      sort(values.begin(), values.end());
+      result.push_back(values);
+    }
     return result;
   }
 
  private:
-  map<int, vector<int>> memo;
-  void in_order_traversal(TreeNode *node, int x) {
+  map<int, map<int, vector<int>>> memo;  // memo[x][y] = val
+  void in_order_traversal(TreeNode *node, int x, int y) {
     if (!node) { return; }
-    memo[x].push_back(node->val);
-    in_order_traversal(node->left, x - 1);
-    in_order_traversal(node->right, x + 1);
+    memo[x][y].push_back(node->val);
+    in_order_traversal(node->left, x - 1, y + 1);
+    in_order_traversal(node->right, x + 1, y + 1);
   }
 };
 
-// Submission Result: Wrong Answer
-// Input:
-// [0,8,1,null,null,3,2,null,4,5,null,null,7,6]
+// [0,5,1,9,null,2,null,null,null,null,3,4,8,6,null,null,null,7]
 // Output:
-// [[8],[0,3,6],[1,4,5],[7,2]]
+// [[7,9],[5,6],[0,2,4],[1,3],[8]]
 // Expected:
-// [[8],[0,3,6],[1,4,5],[2,7]]
+// [[9,7],[5,6],[0,2,4],[1,3],[8]]
