@@ -16,6 +16,8 @@ int orangesRotting(int **grid, int gridSize, int *gridColSize) {
       // ++rotten;
     } else if (grid[i][j] < 0) {
       grid[i][j] = max(rotten_time, grid[i][j]);
+    }else{ // the orange has rotten
+      grid[i][j] = 0;
     }
 
     rot(i + 1, j, rotten_time - 1);
@@ -41,11 +43,10 @@ int orangesRotting(int **grid, int gridSize, int *gridColSize) {
   return max_minute;
 }
 
-//  Runtime Error 
-// Runtime Error Message:
-// AddressSanitizer:DEADLYSIGNAL
-// =================================================================
-// ==31==ERROR: AddressSanitizer: stack-overflow on address 0x7ffe5d400ff8 (pc 0x000000401d7e bp 0x7ffe5d401020 sp 0x7ffe5d401000 T0)
-// ==31==ABORTING
-// Last executed input:
-// [[0,2,2]]
+// Submission Result: Wrong Answer
+// Input:
+// [[2,2,2,1,1]]
+// Output:
+// 4
+// Expected:
+// 2
