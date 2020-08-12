@@ -16,4 +16,5 @@ Explanation: [3,0,6,1,5] means the researcher has 5 papers in total and each of 
              two with no more than 3 citations each, her h-index is 3.
 ```
 
-**Note: **If there are several possible values for _h_, the maximum one is taken as the h-index.
+**Note:**
+If there are several possible values for _h_, the maximum one is taken as the h-index.
