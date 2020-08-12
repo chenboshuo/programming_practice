@@ -15,16 +15,14 @@ int* getRow(int rowIndex, int* returnSize){
   int *ans = (int*)malloc(sizeof(int)* (*returnSize));
   int i = 0;
   int j = rowIndex;
-  while(i<j){
+  while(i<=j){
     ans[i] = ans[j] = (factorials(rowIndex)/ factorials(i)) / factorials(j);
     ++i,--j;
   }
   return ans;
 }
 
-// Input:
-// 0
-// Output:
-// [-1094795586]
-// Expected:
-// [1]
+// Runtime Error Message:
+// Line 4: Char 9: runtime error: signed integer overflow: 2432902008176640000 * 21 cannot be represented in type 'long long int' (solution.c)
+// Last executed input:
+// 21
