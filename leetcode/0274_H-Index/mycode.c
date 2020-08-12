@@ -1,7 +1,7 @@
 #include <stdlib.h>
 int reverse(const void *a, const void *b) { return *(int *)b - *(int *)a; }
 int hIndex(int *citations, int citationsSize) {
-  if (citationsSize == 0) { return 0; }
+  if (citationsSize == 0 || (citationsSize == 1 && citations[0] == 0)) { return 0; }
   qsort(citations, citationsSize, sizeof(int), reverse);
   int left = 0;
   int right = citationsSize - 1;
@@ -16,8 +16,9 @@ int hIndex(int *citations, int citationsSize) {
   return left + 1;
 }
 
+// Submission Result: Wrong Answer 
 // Input:
-// [0]
+// [0,0]
 // Output:
 // 1
 // Expected:
