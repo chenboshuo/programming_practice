@@ -16,9 +16,8 @@ int hIndex(int *citations, int citationsSize) {
   return left + 1;
 }
 
-// Submission Result: Wrong Answer
 // Input:
-// []
+// [0]
 // Output:
 // 1
 // Expected:
