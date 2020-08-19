@@ -4,7 +4,7 @@
  * Note: The returned array must be malloced, assume caller calls free().
  */
 int *numsSameConsecDiff(int N, int K, int *returnSize) {
-  int* result = calloc(sizeof(int),1024); // the result
+  int* result = calloc(10240,sizeof(int)); // the result
   *returnSize = 0;
   if (N == 1){
     *returnSize = 10;
@@ -67,12 +67,8 @@ int *numsSameConsecDiff(int N, int K, int *returnSize) {
   }
   return result;
 }
-// Submission Result: Runtime Error 
-// Runtime Error Message:
-// Line 64: Char 33: runtime error: store to address 0x621000071900 with insufficient space for an object of type 'int' (solution.c)
-// 0x621000071900: note: pointer points here
-//  2c e1 03 27  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00
-//               ^
-// Last executed input:
-// 9
-// 1
+// 92 / 92 test cases passed.
+// Status: Accepted
+// Runtime: 4 ms
+// Memory Usage: 11 MB
+// Submitted: 0 minutes ago
