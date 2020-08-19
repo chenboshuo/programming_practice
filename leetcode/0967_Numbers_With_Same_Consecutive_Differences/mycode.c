@@ -8,11 +8,22 @@ int *numsSameConsecDiff(int N, int K, int *returnSize) {
   *returnSize = 0;
   if (N == 1){
     *returnSize = 10;
-    for (int i = 0; i < 11; ++i)
-    {
+    for (int i = 0; i < 11; ++i){
       result[i] = i;
     }
     return result;
+  }
+  if(K == 0){
+    *returnSize = 9;
+    for (int i = 0; i < 11; ++i){
+      result[i] = 0;
+      int t = N;
+      while(t--){
+        result[i] *= 10;
+        result[i] += i;
+      }
+    }
+    return result+1;
   }
 
   for(int hightest_digit=1; 
@@ -56,12 +67,12 @@ int *numsSameConsecDiff(int N, int K, int *returnSize) {
   }
   return result;
 }
-// https://leetcode.com/submissions/detail/383081796/?from=/explore/challenge/card/august-leetcoding-challenge/551/week-3-august-15th-august-21st/3428/
-// Submission Result: Wrong Answer 
-// Input:
-// 2
-// 0
-// Output:
-// [11,11,22,22,33,33,44,44,55,55,66,66,77,77,88,88,99,99]
-// Expected:
-// [11,22,33,44,55,66,77,88,99]
+// Submission Result: Runtime Error 
+// Runtime Error Message:
+// Line 64: Char 33: runtime error: store to address 0x621000071900 with insufficient space for an object of type 'int' (solution.c)
+// 0x621000071900: note: pointer points here
+//  2c e1 03 27  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00
+//               ^
+// Last executed input:
+// 9
+// 1
