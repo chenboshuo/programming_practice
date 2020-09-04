@@ -8,12 +8,11 @@ class Solution:
 
         return False
 
-
-# Input:
-# [2,2]
-# 1
-# 2
-# Output:
-# false
-# Expected:
-# true
+Input:
+[2,2]
+1
+2
+Output:
+false
+Expected:
+true
