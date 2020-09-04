@@ -1,18 +1,20 @@
 class Solution:
     def containsPattern(self, arr: List[int], m: int, k: int) -> bool:
-        d = defaultdict(int)
+        times = 1
         for i in range(len(arr)-m):
-            d[tuple(arr[i:i+m])] += 1
-            if d[tuple(arr[i:i+m])] >= k:
+            j = i
+            while(arr[j:j+m] == arr[j+m:j+2*m]):
+                times += 1
+                j += m
+            if times >= k:
                 return True
+            times = 1
 
         return False
 
-Input:
-[2,2]
-1
-2
-Output:
-false
-Expected:
-true
+
+# 91 / 91 test cases passed.
+# Status: Accepted
+# Runtime: 56 ms
+# Memory Usage: 13.8 MB
+# Submitted: 4 days, 23 hours ago
