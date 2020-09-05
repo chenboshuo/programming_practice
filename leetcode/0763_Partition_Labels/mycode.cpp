@@ -16,6 +16,7 @@ class Solution {
         char_span[S[i]].second = max(char_span[S[i]].second, i);
       } else {
         char_span[S[i]].first = i;
+        char_span[S[i]].second = i;
         has_find[S[i]] = true;
       }
     }
@@ -40,15 +41,12 @@ class Solution {
       }
     }
     ans.push_back(end - begin + 1);
-
     return ans;
   }
 };
 
-// Submission Result: Wrong Answer
-// Input:
-// "eaaaabaaec"
-// Output:
-// [9,-8]
-// Expected:
-// [9,1]
+// 116 / 116 test cases passed.
+// Status: Accepted
+// Runtime: 20 ms
+// Memory Usage: 7.3 MB
+// Submitted: 0 minutes ago
