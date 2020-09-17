@@ -25,10 +25,7 @@ bool isRobotBounded(char *instructions) {
   }
 
   return (loc[0] == 0 && loc[1] == 0) ||
-         (loc[0] > 0 && loc[1] == 0 && direction != EAST) ||
-         (loc[0] < 0 && loc[1] == 0 && direction != WEST) ||
-         (loc[0] == 0 && loc[1] > 0 && direction != NORTH) ||
-         (loc[0] == 0 && loc[1] < 0 && direction != SOUTH);
+          direction != NORTH;
 }
 
 // Input:
