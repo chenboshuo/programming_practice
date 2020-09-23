@@ -20,7 +20,7 @@ int* majorityElement(int* nums, int numsSize, int* returnSize){
     }
     if(times == 0){
       majority[0] = nums[i];
-      times = 2;
+      times = 1;
     }
   }
 
@@ -73,8 +73,8 @@ int* majorityElement(int* nums, int numsSize, int* returnSize){
 
 // Submission Result: Wrong Answer 
 // Input:
-// [0,3,4,0]
+// [1,3,3,4]
 // Output:
 // []
 // Expected:
-// [0]
+// [3]
