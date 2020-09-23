@@ -44,7 +44,7 @@ int* majorityElement(int* nums, int numsSize, int* returnSize){
   }
 
   // manage only one majority
-  if(majority_times >= numsSize/3 * 2){
+  if(majority_times > numsSize/3 * 2+1){
     *returnSize = 1;
     return majority;
   }
@@ -66,8 +66,8 @@ int* majorityElement(int* nums, int numsSize, int* returnSize){
 
 // Submission Result: Wrong Answer 
 // Input:
-// [1,2]
+// [1,2,3]
 // Output:
 // [1]
 // Expected:
-// [1,2]
+// []
