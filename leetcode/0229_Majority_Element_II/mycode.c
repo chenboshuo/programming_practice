@@ -24,11 +24,6 @@ int* majorityElement(int* nums, int numsSize, int* returnSize){
     }
   }
 
-  // the element doesn't more than floor(n/3)
-  if(times == 0){
-    *returnSize = 0;
-    return majority;
-  }
 
   times = 0;
   int majority_times = 0;
@@ -47,6 +42,12 @@ int* majorityElement(int* nums, int numsSize, int* returnSize){
     }else{
       ++majority_times;
     }
+  }
+
+  // mange the equal cases
+  if(majority_times <= numsSize/3){
+    *returnSize = 0;
+    return NULL;
   }
 
   // manage only one majority
@@ -70,9 +71,10 @@ int* majorityElement(int* nums, int numsSize, int* returnSize){
   return majority;
 }
 
+// Submission Result: Wrong Answer 
 // Input:
-// [1,2,3]
+// [0,3,4,0]
 // Output:
-// [3]
-// Expected:
 // []
+// Expected:
+// [0]
