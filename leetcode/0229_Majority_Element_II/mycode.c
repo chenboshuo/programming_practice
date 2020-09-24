@@ -10,17 +10,17 @@ int* majorityElement(int* nums, int numsSize, int* returnSize){
   int* majority = (int*)malloc(sizeof(int)*2);
 
   // find the most frequently element
-  int times = 2;
-  majority[0] = nums[0];
+  int times = 0;
   for (int i = 1; i < numsSize; i++){
-    if(nums[i] == majority[0]){
-      times += 2;
-    }else{
-      times -= 1;
-    }
     if(times == 0){
       majority[0] = nums[i];
-      times = 1;
+      times = 2;
+    }else{
+      if(nums[i] == majority[0]){
+        times += 2;
+      }else{
+        times -= 1;
+      }
     }
   }
 
