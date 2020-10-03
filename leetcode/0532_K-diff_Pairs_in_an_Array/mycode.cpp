@@ -9,23 +9,30 @@ class Solution {
 
     // create the map
     for(int x:nums){
-      if(match[x] && k == 0){
-        ++count;
-        match[x] = 0;
-      }
-      match[x-k] = 1;
+      match[x-k] += 1;
     }
 
-    for(int x: nums){
-      if(match[x] && k!=0){
-        ++count;
-        match[x] = 0;
+    if(k != 0){
+      for(int x: nums){
+        if(match[x]){
+          ++count;
+          match[x] = 0;
+        }
+      }
+    }else{
+      for(int x:nums){
+        if(match[x] > 1){
+          ++count;
+          match[x] = 0;
+        }
       }
     }
+
 
     return count;
   }
 };
 
-// [1,1,1,1,1]
-// 0
+// https://leetcode.com/submissions/detail/403889457/?from=/explore/challenge/card/october-leetcoding-challenge/559/week-1-october-1st-october-7th/3482/
+// Runtime: 92 ms
+// Memory Usage: 14.8 MB
