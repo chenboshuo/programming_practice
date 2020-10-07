@@ -12,16 +12,16 @@ struct ListNode {
 };
 
 struct ListNode *rotateRight(struct ListNode *head, int k) {
-  if (!head) { return NULL; }
+  if (!head || k == 0) { return head; }
   struct ListNode *slow = head, *fast = head;
-  while (k) {
-    while (k && fast) {
+  while (k--) {
+    if (fast) {
       fast = fast->next;
-      --k;
+    } else {
+      fast = head->next;
     }
-    if (!fast) { fast = head; }
   }
-  struct ListNode *pre_slow = slow, *pre_fast = fast;
+  struct ListNode *pre_slow = head, *pre_fast = head;
   while (fast) {
     pre_slow = slow;
     pre_fast = fast;
@@ -32,11 +32,11 @@ struct ListNode *rotateRight(struct ListNode *head, int k) {
   pre_slow->next = NULL;
   return slow;
 }
-//
+// Submission Result: Wrong Answer
 // Input:
-// [1]
-// 0
+// [1,2]
+// 2
 // Output:
-// []
-// Expected:
 // [1]
+// Expected:
+// [1,2]
