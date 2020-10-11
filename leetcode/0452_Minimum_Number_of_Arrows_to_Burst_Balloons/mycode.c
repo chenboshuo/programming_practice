@@ -13,10 +13,11 @@ int comp(const void *a, const void *b) {
 }
 
 int findMinArrowShots(int **points, int pointsSize, int *pointsColSize) {
+  if (pointsSize == 0) { return 0; }
   qsort(points, pointsSize, sizeof(int *), comp);
   int left = INT_MIN;
-  int right = INT_MIN;
-  int count = 0;
+  int right = INT_MAX;
+  int count = 1;
   for (int i = 0; i < pointsSize; ++i) {
     if (points[i][0] <= right) {
       left = points[i][0];
@@ -31,8 +32,8 @@ int findMinArrowShots(int **points, int pointsSize, int *pointsColSize) {
 }
 
 // Input:
-// [[-2147483648,2147483647]]
+// [[9,12],[1,10],[4,11],[8,12],[3,9],[6,9],[6,7]]
 // Output:
-// 0
-// Expected:
 // 1
+// Expected:
+// 2
