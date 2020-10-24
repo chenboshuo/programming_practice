@@ -21,12 +21,12 @@ int bagOfTokensScore(int *tokens,  //
       score -= 2;
     }
   }
-  return max(up_max_score, down_max_score);
+  return max(max(up_max_score, down_max_score),0);
 }
 // Input:
-// []
-// 85
+// [26]
+// 51
 // Output:
-// -1
-// Expected:
 // 0
+// Expected:
+// 1
