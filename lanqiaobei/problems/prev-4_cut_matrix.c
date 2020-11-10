@@ -51,48 +51,31 @@ char is_selected[10][10];
 long total=0;
 int line_size,col_size;
 
-#define OVERFLOW 1
-#define WRONG 2
-#define FINISHED 3
-/** search for soltuion
+#define FOUND 1
+#define NOT_FOUND 0
+/** search for solution
 @param sum the initial sum
 @param cur the "return" sum
 */
-char search(int i, int j, long sum,long*cur){
+char search(int i, int j, long sum){
   if(i>=line_size|| i<0|| j>=col_size||j<0||is_selected[i][j]){
-    return OVERFLOW;
-    // return WRONG;
+    return NOT_FOUND;
   }
-  *cur = sum + matrix[i][j];
-  if(*cur > total/2){
-    return WRONG;
+  long cur = sum + matrix[i][j];
+  if(cur > total/2){
+    return NOT_FOUND;
   }
   is_selected[i][j] = 1;
-  if(*cur == total/2){
-    return FINISHED;
+  if(cur == total/2){
+    return FOUND;
   }
-  long east_sum;
-  char east_sign = search(i,j+1,*cur,&east_sum);
-  // char 
-  if(east_sign == WRONG || east_sign == OVERFLOW){
-    long west_sum;
-    char west_sign;
-    if(east_sign == WRONG){
-      west_sign = search(i,j+1,*cur,&west_sum);
-    }else{
-      west_sign = search(i+1,j,*cur+east_sum,&west_sum);
-    }
-    if(west_sign == WRONG){
-      is_selected[i][j] = 0;
-      return WRONG;
-    }else if(west_sign == OVERFLOW){
-      return OVERFLOW;
-    }else if(west_sign == FINISHED){
-      return FINISHED;
-    }
-  }else if(east_sign == FINISHED){
-    return FINISHED;
-  }
+  if(!search(i+1,j,cur) && !search(i-1,j,cur) 
+      && !search(i,j+1,cur) && !search(i,j-1,cur)){
+        is_selected[i][j] = 0;
+        return NOT_FOUND;
+      }
+
+
 
 }
 
@@ -112,11 +95,16 @@ int main(int argc, char const *argv[]) {
       matrix[i][j] = in;
     }
   }
-  long temp;
-  if(total & 1 || search(0,0,0,&temp)!= FINISHED){
+  if(total & 1){
     printf("0\n");
     return 0;
   }
+  char has_found = search(0,0,0);
+  if(!has_found){
+    printf("0\n");
+    return 0;
+  }
+  
   
   // count
   int count = 0;
@@ -129,3 +117,9 @@ int main(int argc, char const *argv[]) {
 
   return 0;
 }
+
+
+// 评测点序号	评测结果	得分	CPU使用	内存使用	下载评测数据
+// 1	正确	33.33	0ms	2.171MB	输入 输出
+// 2	错误	0.00	0ms	1.957MB	VIP特权
+// 3	正确	33.33	0ms	1.960MB	VIP特权
