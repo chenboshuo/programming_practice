@@ -9,19 +9,13 @@ int *mostCompetitive(int *nums, int numsSize, int k, int *returnSize) {
   int *stack = (int *)malloc(sizeof(int) * k);
   int top = 0;
   for (int i = 0; i < numsSize; ++i) {
-    while (top && nums[i] < stack[top - 1] && top - 1 + numsSize - 1 >= k) {
+    while (top && nums[i] < stack[top - 1] && top - 1 + numsSize - i >= k) {
       --top;
     }
     if (top < k) { stack[top++] = nums[i]; }
   }
   return stack;
 }
-// Wrong Answer
-// Details
-// Input
-// [71,18,52,29,55,73,24,42,66,8,80,2]
-// 3
-// Output
-// [2,80,42]
-// Expected
-// [8,80,2]
+// Runtime: 392 ms, faster than 57.14% of C online submissions for Find the Most
+// Competitive Subsequence. Memory Usage: 45.7 MB, less than 14.29% of C online
+// submissions for Find the Most Competitive Subsequence.
