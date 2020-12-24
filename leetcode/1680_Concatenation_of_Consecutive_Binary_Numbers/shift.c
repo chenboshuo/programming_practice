@@ -12,11 +12,6 @@ int concatenatedBinary(int n) {
   return ans;
 }
 
-// Wrong Answer
-// Details
-// Input
-// 12
-// Output
-// -1753703748
-// Expected
-// 505379714
+// Runtime: 68 ms, faster than 50.00% of C online submissions for Concatenation
+// of Consecutive Binary Numbers. Memory Usage: 5.5 MB, less than 83.33% of C
+// online submissions for Concatenation of Consecutive Binary Numbers.
