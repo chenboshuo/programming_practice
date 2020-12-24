@@ -3,11 +3,8 @@ class Solution:
         s = ""
         for i in range(1,n+1):
             s += str(bin(i))[2:]
-        return int(s,2) % (10**9+7)
+        return int(s,2) % 1_000_000_007
 
 
-# 403 / 403 test cases passed.
-# Status: Accepted
-# Runtime: 2936 ms
-# Memory Usage: 16.3 MB
-# Submitted: 2 weeks, 4 days ago
+# Runtime: 1756 ms, faster than 49.74% of Python3 online submissions for Concatenation of Consecutive Binary Numbers.
+# Memory Usage: 16.2 MB, less than 30.58% of Python3 online submissions for Concatenation of Consecutive Binary Numbers.
