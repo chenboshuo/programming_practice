@@ -1,12 +1,13 @@
-
 from collections import defaultdict
 count = int(input())
 record = defaultdict(int)
 round_memo = dict()
 for round_ in range(count):
     name,score = input().split()
-    record[name] += int(score)
-    round_memo[name] = round_
+    score = int(score)
+    record[name] += score
+    if score > 0:
+        round_memo[name] = round_
 
 winner_score = 0
 winner_round = count
