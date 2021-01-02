@@ -2,7 +2,7 @@ from collections import defaultdict
 count = int(input())
 record = defaultdict(int)
 # round_memo = dict()
-winner_score = 0
+winner_score = -float('inf')
 for round_ in range(count):
     name,score = input().split()
     score = int(score)
@@ -24,3 +24,40 @@ for round_ in range(count):
     #     winner_round = round_memo[name]
     #     winner_score = score
 print(winner)
+
+# Test: #10, time: 278 ms., memory: 36 KB, exit code: 0, checker exit code: 1, verdict: WRONG_ANSWER
+# Input
+# 50
+# ys 535
+# gczuitwphlv -706
+# fzcgiyqdsddncqeccyegireaj -712
+# gczuitwphlv 127
+# mxcdbcgzfpgnfumhz 134
+# gczuitwphlv -185
+# gczuitwphlv 19
+# ys 708
+# wwsopulbmausryy -461
+# mxcdbcgzfpgnfumhz 840
+# fzcgiyqdsddncqeccyegireaj -911
+# mxcdbcgzfpgnfumhz -762
+# fzcgiyqdsddncqeccyegireaj -926
+# fzcgiyqdsddncqeccyegireaj 761
+# mxcdbcgzfpgnfumhz -82
+# ys -339
+# wwsopulbmausryy -774
+# ys -946
+# ys -43
+# wwsopulbmausryy 989
+# ys -746
+# gczuitwphlv 91
+# wwsopulbmausryy -929
+# wwsopulbmausryy -463
+# mxcdbcgzfpgnfumhz 835
+# gczuitwphlv -84
+# mx...
+# Output
+# mxcdbcgzfpgnfumhz
+# Answer
+# gczuitwphlv
+# Checker Log
+# wrong answer 1st words differ - expected: 'gczuitwphlv', found: 'mxcdbcgzfpgnfumhz'
