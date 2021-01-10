@@ -6,7 +6,7 @@ color = info[2]
 
 lines = []
 for _ in range(length):
-    lines.append(sys.stdin.readline())
+    lines.append(sys.stdin.readline().strip())
 
 different_color = set([color,'.'])
 
@@ -27,9 +27,8 @@ for i in range(length):
     for j in range(length):
         if lines[i][j] == color:
             adjcent(i,j)
-print(color,lines,length,width)
-print(len(different_color)-2)
 
+print(len(different_color)-2)
 # Time: 124 ms, memory: 0 KB
 # Verdict: WRONG_ANSWER
 # Input
