@@ -24,19 +24,10 @@ def adjcent(i,j):
 
 
 for i in range(length):
-    for j in range(length):
+    for j in range(width):
         if lines[i][j] == color:
             adjcent(i,j)
 
 print(len(different_color)-2)
-# Time: 124 ms, memory: 0 KB
-# Verdict: WRONG_ANSWER
-# Input
-# 1 10 H
-# ....DDHHHH
-# Participant's output
-# 0
-# Jury's answer
-# 1
-# Checker comment
-# wrong answer 1st numbers differ - expected: '1', found: '0'
+
+# 108 ms	1900 KB
