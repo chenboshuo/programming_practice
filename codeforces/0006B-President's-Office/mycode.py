@@ -13,7 +13,7 @@ different_color = set([color,'.'])
 def count(i,j):
     global lines
     global different_color
-    if i < length and j < width:
+    if i < length and i >=0 and j>= 0 and j < width:
         different_color.add(lines[i][j])
 
 def adjcent(i,j):
@@ -27,17 +27,17 @@ for i in range(length):
     for j in range(length):
         if lines[i][j] == color:
             adjcent(i,j)
-
+print(color,lines,length,width)
 print(len(different_color)-2)
 
 # Time: 124 ms, memory: 0 KB
 # Verdict: WRONG_ANSWER
 # Input
-# 1 1 C
-# C
+# 1 10 H
+# ....DDHHHH
 # Participant's output
-# 1
-# Jury's answer
 # 0
+# Jury's answer
+# 1
 # Checker comment
-# wrong answer 1st numbers differ - expected: '0', found: '1'
+# wrong answer 1st numbers differ - expected: '1', found: '0'
