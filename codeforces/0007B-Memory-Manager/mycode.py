@@ -8,7 +8,8 @@ root.setLevel(logging.WARNING)
 info = sys.stdin.readline().split()
 times = int(info[0])
 size = int(info[1])
-records = list(sys.stdin.read().split('\n'))
+# records = list(sys.stdin.readline().split('\n'))
+records = [sys.stdin.readline().strip() for _ in range(times)]
 
 logging.info(f"times={times},size={size},records={records}")
 
@@ -91,22 +92,19 @@ for i in records:
         else:
             m.erase(num)
 
-
-# Time: 278 ms, memory: 5764 KB
+# Time: 280 ms, memory: 5576 KB
 # Verdict: RUNTIME_ERROR
 # Input
-# 6 10
-# alloc 5
-# alloc 3
-# erase 1
-# alloc 6
+# 6 1
 # defragment
-# alloc 6
+# alloc 10
+# alloc 1
+# erase -1
+# erase 1
+# erase 1
 # Participant's output
-# 1
-# 2
 # NULL
-# 3
+# 1
 # Jury's answer
 # Checker comment
 # Exit code is 1
