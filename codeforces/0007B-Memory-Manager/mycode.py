@@ -51,6 +51,9 @@ class Memory():
         logging.info(f"memory_occupied:{self.occupies}\n")
 
     def erase(self,pid,delete=True):
+        if pid not in self.occupies:
+            print("ILLEGAL_ERASE_ARGUMENT")
+            return None
         heappush(self.spaces,self.occupies[pid])
         if delete:
             del self.occupies[pid]
@@ -92,19 +95,141 @@ for i in records:
         else:
             m.erase(num)
 
-# Time: 280 ms, memory: 5576 KB
-# Verdict: RUNTIME_ERROR
+# Test: #6, time: 186 ms., memory: 1280 KB, exit code: 0, checker exit code: 1, verdict: WRONG_ANSWER
 # Input
-# 6 1
+# 85 78
 # defragment
-# alloc 10
-# alloc 1
-# erase -1
 # erase 1
 # erase 1
-# Participant's output
-# NULL
+# defragment
+# defragment
+# alloc 63
+# erase -1534929890
+# erase 1
+# alloc 69
+# erase 2
+# defragment
+# defragment
+# erase 2
+# erase 2
+# defragment
+# alloc 8
+# alloc 44
+# erase -1501290085
+# defragment
+# alloc 40
+# alloc 85
+# defragment
+# defragment
+# erase 7
+# defragment
+# erase 1
+# alloc 44
+# alloc 77
+# defragment
+# defragment
+# erase 8
+# erase 2
+# defragment
+# alloc 86
+# alloc 31
+# defragment
+# erase 4
+# erase 10
+# alloc 30
+# alloc 66
+# defragment
+# defragment
+# defragment
+# erase 3
+# defragment
+# alloc 79
+# all...
+# Output
+# ILLEGAL_ERASE_ARGUMENT
+# ILLEGAL_ERASE_ARGUMENT
 # 1
-# Jury's answer
-# Checker comment
-# Exit code is 1
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# ILLEGAL_ERASE_ARGUMENT
+# ILLEGAL_ERASE_ARGUMENT
+# ILLEGAL_ERASE_ARGUMENT
+# 2
+# 3
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# NULL
+# ILLEGAL_ERASE_ARGUMENT
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# NULL
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# 4
+# ILLEGAL_ERASE_ARGUMENT
+# 5
+# NULL
+# NULL
+# 6
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# NULL
+# 7
+# NULL
+# NULL
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# NULL
+# NULL
+# NULL
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# NULL
+# ILLEGAL_ERASE_AR...
+# Answer
+# ILLEGAL_ERASE_ARGUMENT
+# ILLEGAL_ERASE_ARGUMENT
+# 1
+# ILLEGAL_ERASE_ARGUMENT
+# 2
+# ILLEGAL_ERASE_ARGUMENT
+# ILLEGAL_ERASE_ARGUMENT
+# 3
+# 4
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# NULL
+# ILLEGAL_ERASE_ARGUMENT
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# NULL
+# ILLEGAL_ERASE_ARGUMENT
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# NULL
+# ILLEGAL_ERASE_ARGUMENT
+# 5
+# NULL
+# NULL
+# 6
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# NULL
+# 7
+# NULL
+# NULL
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# NULL
+# NULL
+# NULL
+# ILLEGAL_ERASE_ARGUMENT
+# NULL
+# NULL
+# ILLEGAL_ERASE_AR...
+# Checker Log
+# wrong answer 5th lines differ - expected: '2', found: 'NULL'
