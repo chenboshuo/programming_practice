@@ -28,14 +28,18 @@ void alloc(int size){
   printf("NULL\n");
 }
 
-void erase(int id){
+void erase(int target){
   int i;
-  for(i=0;i<memo_size && memory[i] != id;++i){;}
+  if (target <= 0){
+    printf("ILLEGAL_ERASE_ARGUMENT\n");
+    return;
+  }
+  for(i=0;i<memo_size && memory[i] != target;++i){;}
   if(i == memo_size){
     printf("ILLEGAL_ERASE_ARGUMENT\n");
     return;
   }
-  while(i<memo_size && memory[i] == id){
+  while(i<memo_size && memory[i] == target){
     memory[i++] = 0;
   }
 
@@ -81,48 +85,13 @@ int main(int argc, char const *argv[]) {
   memory = (int*)calloc(memo_size,sizeof(int));
   while(times--){
     input();
+    // for(int i=0;i<memo_size;++i){
+    //   printf("%d",memory[i]);
+    // }
+    // printf("\n");
   }
   
   return 0;
 }
 
 
-// Test: #3, time: 30 ms., memory: 0 KB, exit code: 0, checker exit code: 1, verdict: WRONG_ANSWER
-// Input
-// 14 100
-// alloc 99
-// alloc 1
-// alloc 1
-// erase 2
-// alloc 1
-// erase 4
-// erase 1
-// alloc 100
-// alloc 1
-// alloc 99
-// defragment
-// erase 4
-// alloc 100
-// alloc 99
-// Output
-// 1
-// 2
-// NULL
-// 3
-// ILLEGAL_ERASE_ARGUMENT
-// NULL
-// 4
-// NULL
-// 5
-// NULL
-// Answer
-// 1
-// 2
-// NULL
-// 3
-// ILLEGAL_ERASE_ARGUMENT
-// NULL
-// 4
-// NULL
-// NULL
-// NULL
