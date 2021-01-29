@@ -14,7 +14,7 @@ void alloc(int size){
     while(i<memo_size && memory[i] != 0){
       ++i;
     }
-    for(j=0;j<size && memory[i+j] == 0;++j){;}
+    for(j=0;j<size && i+j < memo_size && memory[i+j] == 0;++j){;}
     if(j == size){
       for(int k=i;k<i+j;++k){
         memory[k] = id; 
@@ -50,7 +50,7 @@ void defragment(){
       return;
     }
     int t = memory[quick];
-    memory[quick] = 0;
+    memory[quick++] = 0;
     memory[slow] = t;
   }
 }
