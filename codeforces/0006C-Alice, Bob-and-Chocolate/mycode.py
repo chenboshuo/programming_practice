@@ -8,7 +8,7 @@ time_right = 0
  
  
  
-while left<=right:
+while left < right:
     time_left += times[left]
     left += 1
     while right >= 0  and time_right + times[right] <= time_left:
@@ -16,20 +16,18 @@ while left<=right:
         time_right += times[right]
  
  
-alice_eating = left
+alice_eating = left + bool((left == right) and (time_left <= time_right))
 print(alice_eating,num-alice_eating)
  
  
 
-# 1
-# Time: 154 ms, memory: 0 KB
-# Verdict: WRONG_ANSWER
+# Test: #8, time: 186 ms., memory: 0 KB, exit code: 0, checker exit code: 1, verdict: WRONG_ANSWER
 # Input
-# 5
-# 2 9 8 2 7
-# Participant's output
-# 3 2
-# Jury's answer
-# 2 3
-# Checker comment
-# wrong answer 1st numbers differ - expected: '2', found: '3'
+# 3
+# 6 8 4
+# Output
+# 2 1
+# Answer
+# 1 2
+# Checker Log
+# wrong answer 1st numbers differ - expected: '1', found: '2'
