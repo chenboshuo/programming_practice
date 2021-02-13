@@ -1,30 +1,35 @@
 import sys
-import logging
-from itertools import accumulate
-from bisect import bisect_left
-
-logging.root.setLevel(logging.INFO)
-
 num = int(sys.stdin.readline())
-if num == 1:
-    print(1,0)
-    exit(0)
 times = list(map(int,sys.stdin.readline().strip().split()))
-# left = 0
-# right = num-1
-series = list(accumulate(times))
-logging.info(f"series={series}")
-total = series[-1]
-alice = bisect_left(series,total/2+1)
-print(alice,num-alice)
+left = 0
+right = num-1
+time_left = 0
+time_right = 0
+ 
+ 
+ 
+ 
+while left<=right:
+    time_left += times[left]
+    left += 1
+    while right >= 0  and time_right + times[right] <= time_left:
+        right -= 1
+ 
+ 
+alice_eating = left
+print(alice_eating,num-alice_eating)
+ 
+ 
 
-# Test: #7, time: 310 ms., memory: 5940 KB, exit code: 0, checker exit code: 1, verdict: WRONG_ANSWER
+# 4
+# Time: 154 ms, memory: 0 KB
+# Verdict: WRONG_ANSWER
 # Input
-# 2
-# 8 2
-# Output
-# 0 2
-# Answer
-# 1 1
-# Checker Log
-# wrong answer 1st numbers differ - expected: '1', found: '0'
+# 3
+# 1 1 1
+# Participant's output
+# 1 2
+# Jury's answer
+# 2 1
+# Checker comment
+# wrong answer 1st numbers differ - expected: '2', found: '1'
