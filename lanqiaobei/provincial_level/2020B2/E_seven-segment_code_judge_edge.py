@@ -29,44 +29,51 @@
 # 请问，小蓝可以用七段码数码管表达多少种不同的字符？
 from collections import defaultdict
 
-edges = {
-    1:(0,1),
-    2:(1,3),
-    4:(3,5),
-    8:(4,5),
-    16:(2,4),
-    32:(0,2),
-    64:(2,3)
+# 每个边需要检查的边构成的数码
+edges = {       # gfedcba
+    1:34,       # 0100010
+    2:69,       # 1000101
+    4:74,       # 1001010
+    8:20,       # 0010100
+    16:104,     # 1101000
+    32:81,      # 1010001
+    64:54       # 0110110
 }
 
-def check(nodes):
-    single = 0
-    for i in nodes.values():
-        if i == 1:
-            single += 1
-    return (single <= 3)
+def edges_of(i):
+    """get i's every binary digits
+
+    :param i: num
+    :type i: int
+    """
+    mask = 1
+    while mask <= i:
+        if(mask & i):
+            yield mask
+        mask <<= 1
+
+def is_valid(cur_edges,check_edges):
+    if (check_edges & cur_edges) == 0:
+        return False
+    cur_edges &= (~check_edges)
+    if cur_edges == 0:
+        return True
+    # check the extra cases
+    adjcent = edges[check_edges]
+    valid = False
+    # for i in edges_of(adjcent):
+    #     valid |= is_valid(cur_edges,i)
+    # return valid
+    return any(is_valid(cur_edges,i) for i in edges_of(adjcent))
+
 
 count = 0
+# for case in range(1,4):
 for case in range(1,128):
-    nodes = defaultdict(int)
-    mask = 1
-    while case >= mask:
-        if (case & mask):
-            edge = edges[mask]
-            nodes[edge[0]] += 1
-            nodes[edge[1]] += 1
-        mask <<= 1
-    # print(bin(case))
-    count += bool(check(nodes))
-
+    # 注释掉的代码无法保证初始的边一定能遍历所有结果，
+    # 如g,f,d,c c开始就无法到达d
+    # edge = next(edges_of(case))
+    # count += is_valid(case,edge)
+    count += any(is_valid(case,edge) for edge in edges_of(case))
 print(count)
-# 81
-
-# add the case H
-# delete
-#  ----   |----|
-#         |    |
-# |----|  |----|
-# |    |
-# |----|   ----
-
+# 80
