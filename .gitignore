@@ -12,3 +12,6 @@ linux cpp on what I set the sa of cpp
 *.i*86
 *.x86_64
 *.hex
+
+# py
+**/__pycache__
