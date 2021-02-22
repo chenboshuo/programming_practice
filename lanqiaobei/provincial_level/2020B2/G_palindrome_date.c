@@ -42,6 +42,10 @@
 #include <string.h> // string.h
 #include<stdbool.h> // bool type
 
+int y, m, d;
+struct tm *given;
+char date[9];
+
 bool is_palindrom(char*s){
   int right=7,left=0;
   while(left<right){
@@ -61,16 +65,7 @@ bool is_ababbaba(char *s){
   return (strcmp(target,s) == 0);
 } 
 
-
-int main() {
-  int y, m, d;
-  struct tm *given;
-  char date[9];
-  given = (struct tm *)calloc(1, sizeof(struct tm));
-  // 防止内存中随机数改变日期，
-  // 也可以获取当前时间来得到一个合法日期，这里calloc将所有项清零
-
-  scanf("%4d%2d%2d", &y, &m, &d);
+void search(bool(*func)(char*)){
   // https://www.cplusplus.com/reference/ctime/tm/
   given->tm_year = y - 1900;  // 注意接口结构体的含义
   given->tm_mon = m - 1;
@@ -79,18 +74,19 @@ int main() {
     ++(given->tm_mday);
     mktime(given);
     strftime(date, 9, "%Y%m%d", given);
-  }while(!is_palindrom(date));
+  }while(!(*func)(date));
   puts(date);
+}
 
-  given->tm_year = y - 1900;  // 注意接口结构体的含义
-  given->tm_mon = m - 1;
-  given->tm_mday = d;
-  do{
-    ++(given->tm_mday);
-    mktime(given);
-    strftime(date, 9, "%Y%m%d", given);
-  }while(!is_ababbaba(date));
-  puts(date);
+int main() {
+  given = (struct tm *)calloc(1, sizeof(struct tm));
+  // 防止内存中随机数改变日期，
+  // 也可以获取当前时间来得到一个合法日期，这里calloc将所有项清零
+
+  scanf("%4d%2d%2d", &y, &m, &d);
+
+  search(is_palindrom);
+  search(is_ababbaba);
 
   return 0;
 }
