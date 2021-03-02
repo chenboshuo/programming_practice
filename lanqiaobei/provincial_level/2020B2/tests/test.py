@@ -2,12 +2,17 @@ import subprocess
 import timeit
 
 test_counter = 1
-
+language='c'
 
 def test(inputs, output,long_input=False):
     global name
-    compile = subprocess.run(["gcc", f"../{name}.c",
-                              "-o", f"./{name}.out", "-lm"])
+    global language
+    if language == 'c':
+        compile = subprocess.run(["gcc", f"../{name}.c",
+                                "-o", f"./{name}.out", "-lm"])
+    elif language == 'cpp':
+        compile = subprocess.run(["g++", f"../{name}.cpp",
+                                "-o", f"./{name}.out", ])
     # p = subprocess.run(['python','contest.py'],
     start = timeit.default_timer()
     p = subprocess.run([f'./{name}.out'],

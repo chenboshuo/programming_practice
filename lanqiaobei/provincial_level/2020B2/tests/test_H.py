@@ -1,5 +1,6 @@
 import test as t
 t.name = "H_sum_of_substring_scores"
+# t.language = 'cpp'
 
 t1='''ababc'''
 
