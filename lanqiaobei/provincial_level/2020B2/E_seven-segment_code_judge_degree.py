@@ -44,7 +44,7 @@ def check(nodes):
     for i in nodes.values():
         if i == 1:
             single += 1
-    return (single <= 3)
+    return (single <= 3) # 大多数情况
 
 count = 0
 for case in range(1,128):
@@ -69,4 +69,3 @@ print(count)
 # |----|  |----|
 # |    |
 # |----|   ----
-

@@ -69,3 +69,7 @@ int main() {
 
   return 0;
 }
+
+// test1 passed(1.6629729980195407 ms)
+// test2 passed(1.7400860015186481 ms)
+// test3 passed(27.401542000006884 ms)

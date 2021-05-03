@@ -25,7 +25,7 @@ while day <= end:
     count += 1
     day += delta
 
-print(count)
+print(count) 
 
 """
 doc:https://docs.python.org/3/library/datetime.html#datetime.timedelta

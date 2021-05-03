@@ -7,19 +7,19 @@
 # 分子和分母都是`1` 到`2020` 之间的整数（包括`1`和`2020`）？
 from itertools import product
 
-def gcd(bigger,smaller):
+def gcd(bigger, smaller):
     if bigger < smaller:
         smaller,bigger = bigger,smaller
-    
+
     if smaller==0:
         return bigger
-    return gcd(smaller,bigger%smaller)
+    return gcd(smaller,bigger % smaller)
 
 c = 0
-for i,j in product(range(1,2021),range(1,2021)):
+for i,j in product(range(1,2021), range(1,2021)):
     if gcd(i,j) == 1:
         c += 1
 
-print(c) 
+print(c)
 # output
 # 2481215
