@@ -3,6 +3,7 @@
 
 -   [A 美丽的 2](#A-美丽的-2)
 -   [B 扩散](#B-扩散)
+-   [C 阶乘约数](#-C-阶乘约数)
 
 ## A 美丽的 2
 
@@ -37,6 +38,16 @@
 ```plt
 python B_spread.py  94.97s user 4.04s system 58% cpu 2:49.59 total
 ```
+-   [曼哈顿距离(方格距离)](./B_spread_Manhattan_distance.c)
+```plt
+0.14s user 0.00s system 98% cpu 0.146 total
+```
+
+## 试题 C 阶乘约数
+
+### 问题描述
+定义阶乘 n! = 1 × 2 × 3 × · · · × n。
+请问 100! （100 的阶乘）有多少个约数。
 
 ## 参考
 -   [2020第十一届蓝桥杯大赛软件类国赛题目 C/C++ B 组](https://blog.csdn.net/weixin_43985130/article/details/109695805)
