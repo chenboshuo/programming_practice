@@ -39,6 +39,7 @@
 python B_spread.py  94.97s user 4.04s system 58% cpu 2:49.59 total
 ```
 -   [曼哈顿距离(方格距离)](./B_spread_Manhattan_distance.c)
+
 ```plt
 0.14s user 0.00s system 98% cpu 0.146 total
 ```
@@ -49,6 +50,50 @@ python B_spread.py  94.97s user 4.04s system 58% cpu 2:49.59 total
 定义阶乘 n! = 1 × 2 × 3 × · · · × n。
 请问 100! （100 的阶乘）有多少个约数。
 
+### 我的分析
+
+-  [公式渲染(github不支持latex，这里仅供备份)](https://demo.hedgedoc.org/zxlG6B8HReu6b-EO6vUuzA)
+
+```markdown
+设
+$100!
+= p_{1}^{n_{1}} p_{2}^{n_{2}}
+\cdots p_{m}^{n_{m}}$
+
+1. $p_i(i=1,\dots,m) \leq 100$
+证明：
+假设$\exists i,p_i > 100$
+由于$p_i | 100!$,
+$\exists n \in \{1,2,\dots,100\}$,
+$p_i | n$,
+$p_i \leq n_i \leq 100$,与假设矛盾
+
+2. 求$n_i(i=1,\dots,m)$
+设 $k=\prod_{i=1}^{n} p_i^{n^{(k)}_i}$
+$$
+  \begin{aligned}
+    100! &= \prod_{k=1}^{100} k \\
+      &= \prod_{k=1}^{100}
+        \prod_{i=1}^{n} p_i^{n^{(k)}_i} \\
+      &= \prod_{i=1}^{n} p_i^{n_i} \\
+  \end{aligned}
+$$
+其中
+$$
+n_i = \sum_{k=1}^{100} n_i^{k}
+$$
+3. 最终100!的所有因数为 $\prod_{i=1}^m (1+n_i)$
+```
+
+### 我的答案
+```plt
+39001250856960000
+```
+
+-   [C_factors.py](./C_factors.py)
+
+
 ## 参考
 -   [2020第十一届蓝桥杯大赛软件类国赛题目 C/C++ B 组](https://blog.csdn.net/weixin_43985130/article/details/109695805)
 -   [第十一届蓝桥杯国赛C语言组B类B题扩散](https://blog.csdn.net/bdu_zhangAo/article/details/109715079)
+-   [第十一届蓝桥杯国赛C++B组C题阶乘约数](https://blog.csdn.net/Steve_Liu12399/article/details/109731270)
