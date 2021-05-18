@@ -4,6 +4,7 @@
 -   [A 美丽的 2](#A-美丽的-2)
 -   [B 扩散](#B-扩散)
 -   [C 阶乘约数](#-C-阶乘约数)
+-   [D 本质上升序列](#-D-本质上升序列)
 
 ## A 美丽的 2
 
@@ -44,7 +45,7 @@ python B_spread.py  94.97s user 4.04s system 58% cpu 2:49.59 total
 0.14s user 0.00s system 98% cpu 0.146 total
 ```
 
-## 试题 C 阶乘约数
+## C 阶乘约数
 
 ### 问题描述
 定义阶乘 n! = 1 × 2 × 3 × · · · × n。
@@ -52,7 +53,7 @@ python B_spread.py  94.97s user 4.04s system 58% cpu 2:49.59 total
 
 ### 我的分析
 
--  [公式渲染(github不支持latex，这里仅供备份)](https://demo.hedgedoc.org/zxlG6B8HReu6b-EO6vUuzA)
+-   [公式渲染(github不支持latex，这里仅供备份)](https://demo.hedgedoc.org/zxlG6B8HReu6b-EO6vUuzA#%E8%AF%95%E9%A2%98-C-%E9%98%B6%E4%B9%98%E7%BA%A6%E6%95%B0)
 
 ```markdown
 设
@@ -92,8 +93,49 @@ $$
 
 -   [C_factors.py](./C_factors.py)
 
+## D 本质上升序列
+
+### 问题描述
+小蓝特别喜欢单调递增的事物。
+在一个字符串中，如果取出若干个字符，
+将这些字符按照在字符串中的顺序排列后是单调递增的，则成为这个字符串中的一个单调递增子序列。
+例如，
+在字符串`lanqiao`中，如果取出字符 n 和 q，
+则`nq`组成一个单调递增子序列。
+类似的单调递增子序列还有 `lnq`、`i`、`ano` 等等。
+小蓝发现，有些子序列虽然位置不同，但是字符序列是一样的，
+例如取第二个字符和最后一个字符可以取到 `ao`，
+取最后两个字符也可以取到 `ao`。
+小蓝认为他们并没有本质不同。
+对于一个字符串，
+小蓝想知道，
+本质不同的递增子序列有多少个？
+例如，对于字符串 `lanqiao`，本质不同的递增子序列有 21 个。
+它们分别是
+```plt
+l、a、n、q、i、o、ln、an、lq、aq、nq、ai、lo、ao、no、io、lnq、
+anq、lno、ano、aio。
+```
+请问对于以下字符串
+```plt
+tocyjkdzcieoiodfpbgcncsrjbhmugdnojjddhllnofawllbhf
+iadgdcdjstemphmnjihecoapdjjrprrqnhgccevdarufmliqij
+gihhfgdcmxvicfauachlifhafpdccfseflcdgjncadfclvfmad
+vrnaaahahndsikzssoywakgnfjjaihtniptwoulxbaeqkqhfwl
+```
+本质不同的递增子序列有多少个？
+
+
+### 思路
+
+### 我的答案
+```plt
+3616159
+```
+-   [D_increase_sequence](./D_increase_sequence.py)
 
 ## 参考
--   [2020第十一届蓝桥杯大赛软件类国赛题目 C/C++ B 组](https://blog.csdn.net/weixin_43985130/article/details/109695805)
 -   [第十一届蓝桥杯国赛C语言组B类B题扩散](https://blog.csdn.net/bdu_zhangAo/article/details/109715079)
 -   [第十一届蓝桥杯国赛C++B组C题阶乘约数](https://blog.csdn.net/Steve_Liu12399/article/details/109731270)
+-   [11届国赛python试题 D: 本质上升序列](https://www.jianshu.com/p/31cd66789a99)
+-   [2020第十一届蓝桥杯大赛软件类国赛题目 C/C++ B 组](https://blog.csdn.net/weixin_43985130/article/details/109695805)
