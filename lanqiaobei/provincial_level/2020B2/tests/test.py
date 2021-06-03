@@ -1,5 +1,12 @@
 import subprocess
 import timeit
+import logging
+
+FORMAT = "%(message)s"
+logging.basicConfig(
+    # level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
+    level="INFO", format=FORMAT, datefmt="[%X]"
+)
 
 test_counter = 1
 language='c'
@@ -35,6 +42,7 @@ def test(inputs, expect=None,long_input=False):
         if expect:
             print("expect:")
             print(expect)
-        raise RuntimeError(f"test error in test {test_counter} ({time_cost} ms)")
+        logging.error(f"test error in test {test_counter} ({time_cost} ms)")
+        exit(1)
     print(f"test{test_counter} passed({time_cost} ms)")
     test_counter += 1
