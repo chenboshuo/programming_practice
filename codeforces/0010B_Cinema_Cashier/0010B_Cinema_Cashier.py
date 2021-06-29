@@ -15,9 +15,13 @@ center_y = ceil(size/2)
 logging.debug(f"center_x={center_x},center_y={center_y}")
 distance = [[abs(x-center_x)+ abs(y-center_y) for y in range(size+1)]
                 for x in range(size+1)]
+empty = size**2
 logging.debug(f"distance ={distance}")
 
 for people in peoples:
+    if people > size or people > empty:
+        print(-1)
+        continue
     d = float('inf')
     ans = None
     for x in range(1,size+1):
@@ -32,5 +36,6 @@ for people in peoples:
     if ans:
         print(*ans)
         has_occupied[ans[0]][ans[1]:ans[2]+1] = [True]*people
+        empty -= people
     else:
         print(-1)
