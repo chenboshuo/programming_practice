@@ -29,15 +29,18 @@ while visiting_queue:
             path_memo[next_node]['pre'] = cur_node
             visiting_queue.append(next_node)
 
-def print_path(node):
-    if node is None:
-        return
-    print_path(path_memo[node]['pre'])
-    print(node,end=' ')
-print_path(nodes_size)
+path = []
+cur = nodes_size
+while cur:
+    path.append(str(cur))
+    cur = path_memo[cur]['pre']
+path.reverse()
+if not path:
+    print(-1)
+else:
 
 '''
-Time: 61 ms, memory: 64 KB
+Time: 77 ms, memory: 64 KB
 Verdict: WRONG_ANSWER
 Input
 3 1
