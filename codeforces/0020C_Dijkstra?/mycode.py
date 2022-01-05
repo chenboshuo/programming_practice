@@ -35,21 +35,11 @@ while cur:
     path.append(str(cur))
     cur = path_memo[cur]['pre']
 path.reverse()
-if path[0] == nodes_size:
+if path[0] == str(nodes_size):
     print(-1)
 else:
     print(' '.join(path))
-'''
-4
-Time: 62 ms, memory: 64 KB
-Verdict: WRONG_ANSWER
-Input
-3 1
-1 2 1
-Participant's output
-3
-Jury's answer
--1
-Checker comment
-wrong output format the path is too short 1
-'''
+
+"""
+Time limit exceeded on test 28
+"""
