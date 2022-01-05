@@ -8,8 +8,9 @@ graph = {i: defaultdict(lambda: float('inf'))
 }
 for _ in range(edges_size):
     e1,e2,w = map(int, sys.stdin.readline().split())
-    graph[e1][e2] = min(graph[e1][e2],w)
-    graph[e2][e1] = min(graph[e2][e1],w)
+    if e1 != e2:
+        graph[e1][e2] = min(graph[e1][e2],w)
+        graph[e2][e1] = min(graph[e2][e1],w)
 
 # Node_item = namedtuple("Node_tuple",['cost','pre'])
 path_memo = {
@@ -36,8 +37,7 @@ def print_path(node):
 print_path(nodes_size)
 
 '''
-
-Time: 93 ms, memory: 60 KB
+Time: 61 ms, memory: 64 KB
 Verdict: WRONG_ANSWER
 Input
 3 1
