@@ -13,17 +13,11 @@ inf = 10**9+7
 
 @dataclass(eq=False)
 class Node():
-    name = 0
     access_cost = inf
     has_connected = False
     pre = None
     next_nodes:Dict[int,int] = field(default_factory=(lambda:defaultdict(lambda: inf)))
 
-    def __getitem__(self, node_name):
-        return self.next_nodes[node_name]
-
-    def __setitem__(self,next_node,cost):
-        self.next_nodes[next_node] = cost
 
 nodes_size, edges_size = map(int,sys.stdin.readline().split())
 
@@ -33,10 +27,8 @@ for _ in range(edges_size):
     v1,v2,w = map(int, sys.stdin.readline().split())
 
     if v1 != v2:
-        graph[v1][v2] = min(graph[v1][v2],w)
-        graph[v1].name = v1
-        graph[v2][v1] = min(graph[v2][v1],w)
-        graph[v2].name = v2
+        graph[v1].next_nodes[v2] = min(graph[v1].next_nodes[v2],w)
+        graph[v2].next_nodes[v1] = min(graph[v2].next_nodes[v1],w)
 
 VisitItem = namedtuple('VisitItem',['access_cost','begin_node','end_node'])
 visiting_queue = [VisitItem(access_cost=0,begin_node=None,end_node=1)]
@@ -78,9 +70,9 @@ print(-1)
 
 
 """
-https://codeforces.com/contest/20/submission/142762661
+https://codeforces.com/contest/20/submission/142764350
 Memory limit exceeded on test 31
 
 Test 30:
-Time: 514 ms, memory: 28072 KB
+Time: 561 ms, memory: 26780 KB
 """
