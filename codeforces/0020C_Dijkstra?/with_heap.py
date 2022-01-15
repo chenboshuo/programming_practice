@@ -4,19 +4,20 @@ from collections import defaultdict,namedtuple
 from heapq import heappush,heappop
 from dataclasses import dataclass,field
 from typing import Dict
+inf = 10**9+7
 # from copy import deepcopy
 
-import logging
-log = logging.getLogger()
-log.setLevel(logging.INFO)
+# import logging
+# log = logging.getLogger()
+# log.setLevel(logging.INFO)
 
 @dataclass(eq=False)
 class Node():
     name = 0
-    access_cost = float('inf')
+    access_cost = inf
     has_connected = False
     pre = None
-    next_nodes:Dict[int,float] = field(default_factory=(lambda:defaultdict(lambda: float('inf'))))
+    next_nodes:Dict[int,int] = field(default_factory=(lambda:defaultdict(lambda: inf)))
 
     def __getitem__(self, node_name):
         return self.next_nodes[node_name]
@@ -59,7 +60,7 @@ while visiting_queue:
             cur_node = graph[cur_node_name]
             path.append(str(cur_node_name))
             # cur = path_memo[cur].pre
-            log.error(f"{cur_node.pre}->{cur_node_name}")
+            # log.error(f"{cur_node.pre}->{cur_node_name}")
             cur_node_name = cur_node.pre
         print(' '.join(reversed(path)))
         exit(0)
@@ -77,9 +78,9 @@ print(-1)
 
 
 """
-https://codeforces.com/contest/20/submission/142758142
+https://codeforces.com/contest/20/submission/142762661
 Memory limit exceeded on test 31
 
 Test 30:
-Time: 545 ms, memory: 27596 KB
+Time: 514 ms, memory: 28072 KB
 """
