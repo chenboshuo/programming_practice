@@ -3,7 +3,7 @@ from math import ceil,floor
 from bisect import bisect_right
 
 input = stdin.readline
-target = int(input())
+target = abs(int(input()))
 lower = floor((2*target)**(1/2) - 1)
 upper = ceil((2*target) **(1/2))
 points = [(n*(n+1))//2 for n in range(lower,upper+1)]
@@ -17,12 +17,14 @@ else:
 
 """
 
-Time: 154 ms, memory: 2652 KB
-Verdict: RUNTIME_ERROR
+Time: 124 ms, memory: 16 KB
+Verdict: WRONG_ANSWER
 Input
 -1000000000
 Participant's output
+51002
 Jury's answer
+44723
 Checker comment
-Exit code is 1
+wrong answer 1st numbers differ - expected: '44723', found: '51002'
 """
