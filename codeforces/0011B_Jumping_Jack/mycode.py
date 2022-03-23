@@ -1,32 +1,28 @@
+from sys import stdin
+from math import ceil,floor
+from bisect import bisect_right
 
-import sys
-from collections import deque
-import logging
-logging.root.setLevel(level=logging.DEBUG)
+input = stdin.readline
+target = int(input())
+lower = floor((2*target)**(1/2) - 1)
+upper = ceil((2*target) **(1/2))
+points = [(n*(n+1))//2 for n in range(lower,upper+1)]
+# print(points)
+base = bisect_right(points,target)
+# print(base)
+if target == points[base-1]:
+    print(lower+base-1)
+else:
+    print(lower+base+points[base]-target)
 
-target = int(sys.stdin.readline())
-target = target if target >= 0 else -target
+"""
 
-to_explore = deque()
-to_explore.append(0)
-
-# t = 1
-reached = {0:0}
-while target not in reached:
-    point = to_explore.popleft()
-    t = reached[point] + 1
-
-    left = point-t
-    left = left if left >=0 else -left
-    # if left not in reached:
-    reached[left] =  t
-    to_explore.append(left)
-
-    right = point+t
-    # if right not in reached:
-    reached[right] =  t
-    to_explore.append(right)
-
-    logging.debug(f"t={t},point={point}\nreached={reached},to_explore={to_explore}")
-    # t =
-print(reached[target])
+Time: 154 ms, memory: 2652 KB
+Verdict: RUNTIME_ERROR
+Input
+-1000000000
+Participant's output
+Jury's answer
+Checker comment
+Exit code is 1
+"""
