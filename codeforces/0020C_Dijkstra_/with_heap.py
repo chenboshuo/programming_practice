@@ -31,7 +31,12 @@ for _ in range(edges_size):
         graph[v2].next_nodes[v1] = min(graph[v2].next_nodes[v1],w)
 
 VisitItem = namedtuple('VisitItem',['access_cost','begin_node','end_node'])
-visiting_queue = [VisitItem(access_cost=0,begin_node=None,end_node=1)]
+# visiting_queue = [VisitItem(access_cost=0,begin_node=None,end_node=1)]
+visiting_queue = [ \
+    VisitItem(access_cost=graph[1]next_nodes[neighbor_node],begin_node=1,end_node=neighbor_node) 
+    for neighbor_node in graph[1]next_nodes.keys()
+]
+# for  in graph[1]:
 
 
 while visiting_queue:
