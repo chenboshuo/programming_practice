@@ -5,29 +5,38 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        if root is None:
-            return True
-        val = root.val
-        if root.left is not None:
-            left = root.left.val
-            if left >= val:
+    def isValidBST(self, 
+        node: Optional[TreeNode],
+        inferior=-float('inf'),
+        superior=float('inf')) -> bool:
+        val = node.val
+        if node.left is not None:
+            left = node.left.val
+            if left >= val or left <= inferior:
                 return False
-
-        if root.right is not None:
-            right = root.right.val
-            if right <= val:
+            # inferior = left 
+            left_correct = self.isValidBST(
+                node=node.left,
+                inferior=inferior,
+                superior=val
+            )
+        else:
+            left_correct = True
+        
+        if node.right is not None:
+            right = node.right.val
+            if val >= right or right >= superior:
                 return False
-
-        return self.isValidBST(root.left) and self.isValidBST(root.right)
-# https://leetcode.com/submissions/detail/770639244/
-# Submission Detail
-# 72 / 80 test cases passed.
-# Status: Wrong Answer
-# Submitted: 3 minutes ago
-# Input:
-# [5,4,6,null,null,3,7]
-# Output:
-# true
-# Expected:
-# false
+            # superior = right
+            right_correct = self.isValidBST(
+                node=node.right,
+                inferior=val,
+                superior=superior
+            )
+        else:
+            right_correct = True
+        return left_correct and right_correct
+            
+# https://leetcode.com/submissions/detail/770647733/# Submission Detail
+# Runtime: 55 ms, faster than 78.59% of Python3 online submissions for Validate Binary Search Tree.
+# Memory Usage: 16.6 MB, less than 46.02% of Python3 online submissions for Validate Binary Search Tree.
